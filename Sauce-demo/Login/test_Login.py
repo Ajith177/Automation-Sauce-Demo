@@ -116,7 +116,7 @@ class Test_Login:
 
     @pytest.mark.run(order=8)
     def test_case_eight(self, driver):
-        print("Clearing the Input of the User-name")
+        print(Fore.LIGHTRED_EX,"Clearing the Input of the User-name")
         clearing_the_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         cleared_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
@@ -152,7 +152,7 @@ class Test_Login:
 
     @pytest.mark.run(order=10)
     def test_case_ten(self, driver):
-        print("Clearing the Input of the Username Input")
+        print(Fore.BLACK,"Clearing the Input of the Username Input")
         clearing_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         cleared_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
@@ -177,7 +177,7 @@ class Test_Login:
 
     @pytest.mark.run(order=11)
     def test_case_eleven(self, driver):
-        print("Clearing the Input of the User-name Input for 11th Test case")
+        print(Fore.CYAN,"Clearing the Input of the User-name Input for 11th Test case")
         clearing_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         cleared_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
@@ -199,7 +199,7 @@ class Test_Login:
 
     @pytest.mark.run(order=12)
     def test_case_twelve(self, driver):
-        print("Clearing the Input of the User-name Input for the 12th Test Case")
+        print(Fore.MAGENTA,"Clearing the Input of the User-name Input for the 12th Test Case")
         clearing_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         cleared_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
@@ -222,7 +222,7 @@ class Test_Login:
 
     @pytest.mark.run(order=13)
     def test_case_thirteen(self, driver):
-        print("Clearing the Input of the User-name Input for 13th Test Case")
+        print(Fore.LIGHTBLUE_EX,"Clearing the Input of the User-name Input for 13th Test Case")
         clearing_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         cleared_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
@@ -245,7 +245,7 @@ class Test_Login:
 
     @pytest.mark.run(order=14)
     def test_case_fourteen(self, driver):
-        print("Clearing the Input of the User-name Input for 14th Test Case")
+        print(Fore.LIGHTMAGENTA_EX,"Clearing the Input of the User-name Input for 14th Test Case")
         clearing_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         cleared_email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
@@ -282,7 +282,7 @@ class Test_Login:
 
     @pytest.mark.run(order=15)
     def test_case_fifteen(self, driver):
-        print("Clearing the Input of the User-name Input for 15th Test Case")
+        print(Fore.LIGHTBLUE_EX,"Clearing the Input of the User-name Input for 15th Test Case")
         clearing_the_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         cleared_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
@@ -314,7 +314,7 @@ class Test_Login:
 
     @pytest.mark.run(order=16)
     def test_case_sixteen(self, driver):
-        print("Clearing the Input of the User-name Input for 16th Test Case")
+        print(Fore.BLUE,"Clearing the Input of the User-name Input for 16th Test Case")
         clearing_the_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         cleared_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
@@ -344,7 +344,7 @@ class Test_Login:
 
     @pytest.mark.run(order=17)
     def test_case_seventeen(self, driver):
-        print("Clearing the Input of the User-name Input for 16th Test Case")
+        print(Fore.CYAN,"Clearing the Input of the User-name Input for 16th Test Case")
         clearing_the_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         cleared_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
