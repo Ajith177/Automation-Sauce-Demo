@@ -12,6 +12,10 @@ class Test_Login:
     target_folder = r'C:\Users\AJITH\PycharmProjects\PythonProject\Sauce-demo\Screenshots'
     email_input = "//input[contains(@placeholder,'Username')]"
     password_input="//input[contains(@placeholder,'Password')]"
+    login_button = "//input[contains(@name,'login-button')]"
+    taking_user_name_1 = "//div[contains(@id,'login_credentials')]"
+
+    # By the above User_name Credentials User can able to Select the list of User_name that get listed in the UI.
 
     @pytest.mark.run(order=1)
     def test_case_one(self, driver):
@@ -367,3 +371,245 @@ class Test_Login:
         driver.save_screenshot(screenshot_file)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
+
+        @pytest.mark.run(order=17)
+        def test_case_seventeen(self, driver):
+            print(Fore.RED, "Clearing the Input of the User-name Input for 17th Test Case")
+            clearing_the_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(
+                Keys.CONTROL + "a")
+            time.sleep(2)
+            cleared_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
+            time.sleep(2)
+            driver.refresh()
+            taking_usser_name_on_UI = driver.find_element(By.XPATH, self.taking_user_name_1)
+            a = taking_usser_name_on_UI.text
+            lines = a.splitlines()
+            fourth_name_in_UI = lines[4]
+            time.sleep(2)
+            email = driver.find_element(By.XPATH, self.email_input).send_keys(fourth_name_in_UI)
+            time.sleep(2)
+            entering_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(
+                "12343572727273737373")
+            time.sleep(2)
+            login_button_click = driver.find_element(By.XPATH, self.login_button).click()
+            time.sleep(2)
+            driver.execute_script("alert('Giving the Numbers  in the Password Input length > 10')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            screenshot_file = "Testcase_17.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+
+        @pytest.mark.run(order=18)
+        def test_case_eighteen(self, driver):
+            print(Fore.BLUE, "Clearing the Input of the User-name Input for 18th Test Case")
+            clearing_the_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(
+                Keys.CONTROL + "a")
+            time.sleep(2)
+            cleared_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
+            time.sleep(2)
+            driver.refresh()
+            taking_usser_name_on_UI = driver.find_element(By.XPATH, self.taking_user_name_1)
+            a = taking_usser_name_on_UI.text
+            lines = a.splitlines()
+            fifth_name_in_UI = lines[5]
+            time.sleep(2)
+            email = driver.find_element(By.XPATH, self.email_input).send_keys(fifth_name_in_UI)
+            time.sleep(2)
+            entering_password_input = driver.find_element(By.XPATH, self.password_input).send_keys("!@##$")
+            time.sleep(2)
+            login_button_click = driver.find_element(By.XPATH, self.login_button).click()
+            time.sleep(2)
+            driver.execute_script("alert('Giving the Special Charcters  in the Password Input length < 10')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            screenshot_file = "Testcase_18.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+
+        @pytest.mark.run(order=19)
+        def test_case_nineteen(self, driver):
+            print(Fore.BLACK, "Clearing the Input of the User-name Input for 19th Test Case")
+            clearing_the_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(
+                Keys.CONTROL + "a")
+            time.sleep(2)
+            cleared_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
+            time.sleep(2)
+            driver.refresh()
+            taking_usser_name_on_UI = driver.find_element(By.XPATH, self.taking_user_name_1)
+            a = taking_usser_name_on_UI.text
+            lines = a.splitlines()
+            sixth_name_in_UI = lines[6]
+            time.sleep(2)
+            email = driver.find_element(By.XPATH, self.email_input).send_keys(sixth_name_in_UI)
+            time.sleep(2)
+            entering_password_input = driver.find_element(By.XPATH, self.password_input).send_keys(
+                "!@##$@#$%^$%^&*%^&$%^&*")
+            time.sleep(2)
+            login_button_click = driver.find_element(By.XPATH, self.login_button).click()
+            time.sleep(2)
+            driver.execute_script("alert('Giving the Special Charcters  in the Password Input length < 10')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            screenshot_file = "Testcase_19.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+
+        @pytest.mark.run(order=20)
+        def test_case_twenty(self, driver):
+            print(Fore.CYAN, "Clearing the Input of the User-name Input for 20th Test Case")
+            email = driver.find_element(By.XPATH, self.email_input).send_keys("   ")
+            time.sleep(2)
+            entering_password_input = driver.find_element(By.XPATH, self.password_input).send_keys("    ")
+            time.sleep(2)
+            login_button_click = driver.find_element(By.XPATH, self.login_button).click()
+            time.sleep(2)
+            driver.execute_script("alert('Checking the Email & Password Input by Giving the Empty Spaces.')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            screenshot_file = "Testcase_20.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+
+        @pytest.mark.run(order=21)
+        def test_case_twenty_one(self, driver):
+            print(Fore.BLUE, "Clearing the Input of the User-name Input for 21th Test Case")
+            time.sleep(2)
+            email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
+            time.sleep(2)
+            email_the_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
+            time.sleep(5)
+            driver.refresh()
+            time.sleep(2)
+            email_input_1 = driver.find_element(By.XPATH, self.email_input).send_keys("fcwcgcdc225266763")
+            time.sleep(2)
+            password_input_1 = driver.find_element(By.XPATH, self.password_input).send_keys("98398398jnjnfrjfn")
+            time.sleep(2)
+            driver.execute_script(
+                "alert('Checking the Email & Password by giving the Combination of Letters and numbers')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            screenshot_file = "Testcase_21.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+
+        @pytest.mark.run(order=22)
+        def test_case_twenty_two(self, driver):
+            print(Fore.BLUE, "Clearing the Input of the User-name Input for 22th Test Case")
+            time.sleep(2)
+            email_the_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
+            time.sleep(2)
+            email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
+            time.sleep(5)
+            password_input_1 = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.CONTROL + "a")
+            time.sleep(2)
+            password_input_2 = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
+            time.sleep(5)
+            driver.refresh()
+            email_input_3 = driver.find_element(By.XPATH, self.email_input).send_keys("BDDJDJHJRRNRHI3334343")
+            time.sleep(2)
+            password_input2 = driver.find_element(By.XPATH, self.password_input).send_keys("YUGDDDB8787")
+            time.sleep(2)
+            driver.execute_script(
+                "alert('Checking the Email & Password by giving the Combination of Capital Letters and numbers')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            screenshot_file = "Testcase_22.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+
+        @pytest.mark.run(order=23)
+        def test_case_twenty_three(self, driver):
+            print(Fore.BLUE, "Clearing the Input of the User-name Input for 23th Test Case")
+            time.sleep(2)
+            email_the_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
+            time.sleep(2)
+            email_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
+            time.sleep(5)
+            password_input_1 = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.CONTROL + "a")
+            time.sleep(2)
+            password_input_2 = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
+            time.sleep(5)
+            driver.refresh()
+            email_input_4 = driver.find_element(By.XPATH, self.email_input).send_keys("!@$#@%$@%$#%77687687")
+            time.sleep(2)
+            password_input4 = driver.find_element(By.XPATH, self.password_input).send_keys("Y^#^$^^^#%&8787")
+            time.sleep(2)
+            driver.execute_script(
+                "alert('Checking the Email & Password by giving the Combination of Special Letters and numbers')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            screenshot_file = "Testcase_23.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+
+        @pytest.mark.run(order=24)
+        def test_case_twenty_four(self, driver):
+            print(Fore.BLUE, "Clearing the Input of the User-name Input for 24th Test Case")
+            email_input_7 = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
+            time.sleep(2)
+            email_input_8 = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
+            time.sleep(2)
+            password_input_1 = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.CONTROL + "a")
+            time.sleep(2)
+            password_input_2 = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
+            time.sleep(5)
+            driver.refresh()
+            email_input_11 = driver.find_element(By.XPATH, self.email_input).send_keys("")
+            time.sleep(2)
+            password_input_6 = driver.find_element(By.XPATH, self.password_input).send_keys("")
+            time.sleep(2)
+            login_button = driver.find_element(By.XPATH, self.login_button).click()
+            time.sleep(2)
+            driver.execute_script(
+                "alert('Checking the Email & Password by giving the Combination of Special Letters and numbers')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            screenshot_file = "Testcase_24.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+
+        @pytest.mark.run(order=25)
+        def test_case_twenty_four(self, driver):
+            print(Fore.BLUE, "Clearing the Input of the User-name Input for 25th Test Case")
+            email_input_7 = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
+            time.sleep(2)
+            email_input_8 = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
+            time.sleep(2)
+            password_input_1 = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.CONTROL + "a")
+            time.sleep(2)
+            password_input_2 = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
+            time.sleep(5)
+            driver.refresh()
