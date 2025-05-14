@@ -515,7 +515,7 @@ class Test_Login:
 
     @pytest.mark.run(order=22)
     def test_case_twenty_two(self, driver):
-        print(Fore.BLUE, "Clearing the Input of the User-name Input for 22th Test Case")
+        print(Fore.LIGHTCYAN_EX, "Clearing the Input of the User-name Input for 22th Test Case")
         time.sleep(2)
         email_the_input = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
@@ -573,7 +573,7 @@ class Test_Login:
 
     @pytest.mark.run(order=24)
     def test_case_twenty_four(self, driver):
-        print(Fore.BLUE, "Clearing the Input of the User-name Input for 24th Test Case")
+        print(Fore.CYAN, "Clearing the Input of the User-name Input for 24th Test Case")
         email_input_7 = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         email_input_8 = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
@@ -603,7 +603,7 @@ class Test_Login:
 
     @pytest.mark.run(order=25)
     def test_case_twenty_four(self, driver):
-        print(Fore.BLUE, "Clearing the Input of the User-name Input for 25th Test Case")
+        print(Fore.MAGENTA, "Clearing the Input of the User-name Input for 25th Test Case")
         email_input_7 = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         email_input_8 = driver.find_element(By.XPATH, self.email_input).send_keys(Keys.BACKSPACE)
@@ -613,3 +613,40 @@ class Test_Login:
         password_input_2 = driver.find_element(By.XPATH, self.password_input).send_keys(Keys.BACKSPACE)
         time.sleep(5)
         driver.refresh()
+
+    @pytest.mark.run(order=26)
+    def test_case_twenty_six(self, driver):
+        print(Fore.BLUE, "Clearing the Input of the User-name Input for 26th Test Case")
+        time.sleep(2)
+        taking_usser_name_on_UI = driver.find_element(By.XPATH, self.taking_user_name_1)
+        a = taking_usser_name_on_UI.text
+        lines = a.splitlines()
+        fifth_name_in_UI = lines[5]
+        time.sleep(2)
+        email = driver.find_element(By.XPATH, self.email_input).send_keys(fifth_name_in_UI)
+        time.sleep(2)
+        pass_word = driver.find_element(By.XPATH, self.password_input).send_keys("secret_sauce")
+        time.sleep(2)
+        login_button = driver.find_element(By.XPATH, self.login_button).click()
+        time.sleep(5)
+        driver.refresh()
+        time.sleep(2)
+        try:
+            popup_ok_button = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, "//button[text()='OK']"))
+            )
+            popup_ok_button.click()
+            print("Popup handled.")
+        except Exception as e:
+            print("Popup not found or already handled:", e)
+        time.sleep(3)
+        driver.execute_script("alert('In the Swag labs Page (Cart Page')")
+        time.sleep(3)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(2)
+        screenshot_file = "Testcase_26.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+        time.sleep(2)
