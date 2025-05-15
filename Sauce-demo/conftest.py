@@ -23,7 +23,6 @@ def driver():
     print(URL, "This is the URL")
     time.sleep(10)
     driver.maximize_window()
-
     yield driver
     driver.quit()
 
@@ -32,8 +31,6 @@ def driver():
 def api_session():
     session = requests.Session()
     return session
-
-
 
 
 @pytest.fixture(scope="session")
