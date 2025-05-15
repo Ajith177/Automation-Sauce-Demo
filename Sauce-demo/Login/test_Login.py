@@ -9,7 +9,7 @@ import pytest
 
 
 class Test_Login:
-    target_folder = r'C:\Users\AJITH\PycharmProjects\PythonProject\Sauce-demo\Screenshots'
+    target_folder = r'C:\Users\AJITH\PycharmProjects\PythonProject\Sauce-demo\Screenshots\Login'
     email_input = "//input[contains(@placeholder,'Username')]"
     password_input="//input[contains(@placeholder,'Password')]"
     login_button = "//input[contains(@name,'login-button')]"

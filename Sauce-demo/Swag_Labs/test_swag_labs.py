@@ -14,7 +14,7 @@ from Login_Module.test_login_helper import LoginHelper
 
 
 class Test_Swag:
-    target_folder = r'C:\Users\ZCSU040\Pictures\Sauce\Sauce_Automation\Screenshots\Swag_Labs'
+    target_folder = r'C:\Users\AJITH\PycharmProjects\PythonProject\Sauce-demo\Screenshots\Swag_lab'
     click_on_three_dots="//button[contains(@id,'react-burger-menu-btn')]"
     click_on_all_items="//a[contains(text(),'All Items')]"
     click_on_about="//a[contains(text(),'About')]"
