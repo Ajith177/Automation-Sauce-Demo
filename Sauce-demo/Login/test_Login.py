@@ -640,7 +640,7 @@ class Test_Login:
         # except Exception as e:
         #     print("Popup not found or already handled:", e)
         time.sleep(3)
-        driver.execute_script("alert('In the Swag labs Page (Cart Page')")
+        driver.execute_script("alert('In the Swag labs Cart Page')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
