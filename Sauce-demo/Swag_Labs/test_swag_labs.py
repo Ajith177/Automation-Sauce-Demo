@@ -22,12 +22,19 @@ class Test_Swag:
     click_on_reset_app_state="//a[contains(text(),'Reset')]"
     close_btn_side_bar="//button[contains(@id,'react-burger-cross-btn')]"
 
-    sauce_labs_back_pack="(//button[contains(text(),'Add to cart')])[1]"
-    sauce_labs_bike_light="(//button[contains(text(),'Add to cart')])[2]"
-    sauce_labs_bolt_t_shirt="(//button[contains(text(),'Add to cart')])[3]"
-    sauce_labs_fleece_jacket="(//button[contains(text(),'Add to cart')])[4]"
-    sauce_labs_onesie="(//button[contains(text(),'Add to cart')])[5]"
-    sauce_labs_red_t_shirt="(//button[contains(text(),'Add to cart')])[6]"
+    # sauce_labs_back_pack="(//button[contains(text(),'Add to cart')])[1]"
+    # sauce_labs_bike_light="(//button[contains(text(),'Add to cart')])[2]"
+    # sauce_labs_bolt_t_shirt="(//button[contains(text(),'Add to cart')])[3]"
+    # sauce_labs_fleece_jacket="(//button[contains(text(),'Add to cart')])[4]"
+    # sauce_labs_onesie="(//button[contains(text(),'Add to cart')])[5]"
+    # sauce_labs_red_t_shirt="(//button[contains(text(),'Add to cart')])[6]"
+
+    sauce_labs_back_pack = "//button[contains(@id,'add-to-cart-sauce-labs-backpack')]"
+    sauce_labs_bike_light = "//button[contains(@id,'add-to-cart-sauce-labs-bike-light')]"
+    sauce_labs_bolt_t_shirt = "//button[contains(@id,'add-to-cart-sauce-labs-bolt-t-shirt')]"
+    sauce_labs_fleece_jacket = "//button[contains(@id,'add-to-cart-sauce-labs-fleece-jacket')]"
+    sauce_labs_onesie = "//button[contains(@id,'add-to-cart-sauce-labs-onesie')]"
+    sauce_labs_red_t_shirt = "add-to-cart-test.allthethings()-t-shirt-(red)"
 
     click_on_back_to_products="//button[contains(text(),'Back')]"
 
@@ -176,6 +183,290 @@ class Test_Swag:
             screenshot_file = "Testcase_30.png"
             driver.save_screenshot(screenshot_file)
             shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+            login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=32)
+    def test_case_thirty_two(self, driver):
+        print("Clicked on the Add to Cart of the Bolt_t_shirt")
+        time.sleep(2)
+        login_helper = LoginHelper(driver)
+        login_helper.ensure_logged_in()
+        time.sleep(2)
+        driver.refresh()
+        login_helper.ensure_logged_in()
+        try:
+            driver.execute_script("alert('Clicked the Add to Cart Button in the Bolt_t_shirt')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            clicked_the_cart_button_back_pack = driver.find_element(By.XPATH, self.sauce_labs_bolt_t_shirt).click()
+            time.sleep(3)
+            screenshot_file = "Testcase_32.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+            login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=33)
+    def test_case_thirty_three(self, driver):
+        print("Clicked on the Add to Cart of the Fleece_jacket")
+        time.sleep(2)
+        login_helper = LoginHelper(driver)
+        login_helper.ensure_logged_in()
+        time.sleep(2)
+        driver.refresh()
+        login_helper.ensure_logged_in()
+        try:
+            driver.execute_script("alert('Clicked the Add to Cart Button in the Fleece_Jacket')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            clicked_the_cart_button_back_pack = driver.find_element(By.XPATH, self.sauce_labs_bolt_t_shirt).click()
+            time.sleep(3)
+            screenshot_file = "Testcase_33.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+            login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=34)
+    def test_case_thirty_four(self, driver):
+        print("Clicked on the Add to Cart of the One_Sie")
+        time.sleep(2)
+        login_helper = LoginHelper(driver)
+        login_helper.ensure_logged_in()
+        time.sleep(2)
+        driver.refresh()
+        login_helper.ensure_logged_in()
+        try:
+            driver.execute_script("alert('Clicked the Add to Cart Button in the One_Sie')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            clicked_the_cart_button_back_pack = driver.find_element(By.XPATH, self.sauce_labs_onesie).click()
+            time.sleep(3)
+            screenshot_file = "Testcase_34.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+            login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=35)
+    def test_case_thirty_five(self, driver):
+        print("Clicked on the Add to Cart of the Red_t_shirt")
+        time.sleep(2)
+        login_helper = LoginHelper(driver)
+        login_helper.ensure_logged_in()
+        time.sleep(2)
+        driver.refresh()
+        login_helper.ensure_logged_in()
+        try:
+            driver.execute_script("alert('Clicked the Add to Cart Button in the Red_t_Shirt')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            clicked_the_cart_button_back_pack = driver.find_element(By.XPATH, self.sauce_labs_red_t_shirt).click()
+            time.sleep(3)
+            screenshot_file = "Testcase_35.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+            login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=36)
+    def test_case_thirty_six(self, driver):
+        print("Clicked on the Back-pack Product")
+        time.sleep(2)
+        login_helper = LoginHelper(driver)
+        login_helper.ensure_logged_in()
+        time.sleep(2)
+        driver.refresh()
+        login_helper.ensure_logged_in()
+        try:
+            driver.execute_script("alert('Clicked on the Back-pack Product')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            clicked_the_cart_button_back_pack = driver.find_element(By.XPATH, self.click_on_Back_pack).click()
+            time.sleep(3)
+            screenshot_file = "Testcase_36.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+            clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
+            time.sleep(2)
+            print("Moving Back to Product Listing Module")
+            time.sleep(2)
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+            login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=37)
+    def test_case_thirty_seven(self, driver):
+        print("Clicked on the Bike_light Product")
+        time.sleep(2)
+        login_helper = LoginHelper(driver)
+        login_helper.ensure_logged_in()
+        time.sleep(2)
+        driver.refresh()
+        login_helper.ensure_logged_in()
+        try:
+            driver.execute_script("alert('Clicked on the Bike_light Product')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            clicked_the_cart_button_back_pack = driver.find_element(By.XPATH, self.click_on_Bike_Light).click()
+            time.sleep(3)
+            screenshot_file = "Testcase_37.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+            clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
+            time.sleep(2)
+            print("Moving Back to Product Listing Module")
+            time.sleep(2)
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+            login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=38)
+    def test_case_thirty_eight(self, driver):
+        print("Clicked on the Bolt_t_shirt Product")
+        time.sleep(2)
+        login_helper = LoginHelper(driver)
+        login_helper.ensure_logged_in()
+        time.sleep(2)
+        driver.refresh()
+        login_helper.ensure_logged_in()
+        try:
+            driver.execute_script("alert('Clicked on the Bolt_t_shirt Product')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            clicked_the_cart_button_back_pack = driver.find_element(By.XPATH, self.click_on_Bolt_T_shirt).click()
+            time.sleep(3)
+            screenshot_file = "Testcase_38.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+            clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
+            time.sleep(2)
+            print("Moving Back to Product Listing Module")
+            time.sleep(2)
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+            login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=39)
+    def test_case_thirty_nine(self, driver):
+        print("Clicked on the fleece_jacket Product")
+        time.sleep(2)
+        login_helper = LoginHelper(driver)
+        login_helper.ensure_logged_in()
+        time.sleep(2)
+        driver.refresh()
+        login_helper.ensure_logged_in()
+        try:
+            driver.execute_script("alert('Clicked on the fleece_jacket Product')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            clicked_the_cart_button_back_pack = driver.find_element(By.XPATH, self.click_on_fleece_jacket).click()
+            time.sleep(3)
+            screenshot_file = "Testcase_39.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+            clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
+            time.sleep(2)
+            print("Moving Back to Product Listing Module")
+            time.sleep(2)
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+            login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=40)
+    def test_case_forty(self, driver):
+        print("Clicked on the fleece_jacket Product")
+        time.sleep(2)
+        login_helper = LoginHelper(driver)
+        login_helper.ensure_logged_in()
+        time.sleep(2)
+        driver.refresh()
+        login_helper.ensure_logged_in()
+        try:
+            driver.execute_script("alert('Clicked on the fleece_jacket Product')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            clicked_the_cart_button_back_pack = driver.find_element(By.XPATH, self.click_on_fleece_jacket).click()
+            time.sleep(3)
+            screenshot_file = "Testcase_40.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+            clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
+            time.sleep(2)
+            print("Moving Back to Product Listing Module")
+            time.sleep(2)
+        except Exception as e:
+            print(f"Exception occurred: {e}")
+            login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=41)
+    def test_case_forty(self, driver):
+        print("Clicked on the One_sie Product")
+        time.sleep(2)
+        login_helper = LoginHelper(driver)
+        login_helper.ensure_logged_in()
+        time.sleep(2)
+        driver.refresh()
+        login_helper.ensure_logged_in()
+        try:
+            driver.execute_script("alert('Clicked on the One_sie Product')")
+            time.sleep(3)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(2)
+            clicked_the_cart_button_back_pack = driver.find_element(By.XPATH, self.click_on_One_sie).click()
+            time.sleep(3)
+            screenshot_file = "Testcase_41.png"
+            driver.save_screenshot(screenshot_file)
+            shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+            time.sleep(2)
+            clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
+            time.sleep(2)
+            print("Moving Back to Product Listing Module")
             time.sleep(2)
         except Exception as e:
             print(f"Exception occurred: {e}")
