@@ -1,6 +1,5 @@
 import time
 from time import sleep
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
@@ -471,3 +470,56 @@ class Test_Swag:
         except Exception as e:
             print(f"Exception occurred: {e}")
             login_helper.ensure_logged_in()
+
+    @pytest.mark.run(order=42)
+    def test_case_forty_two(self, driver):
+        print("Calculating the Total Items Cost Price")
+        time.sleep(2)
+        # login_helper = LoginHelper(driver)
+        # login_helper.ensure_logged_in()
+        # time.sleep(2)
+        # login_helper.ensure_logged_in()
+        driver.execute_script("alert('Calculating the Total Items Cost Price')")
+        time.sleep(3)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(2)
+        Back_pack_prices = driver.find_element(By.XPATH, self.Back_pack_price)
+        back_pack = Back_pack_prices.text.replace("$", "")
+        print(back_pack, "This is Back_pack_price")
+        a = float(back_pack)
+        time.sleep(2)
+        Bike_light_prices = driver.find_element(By.XPATH, self.Bike_light_price)
+        bike_light = Bike_light_prices.text.replace("$", "")
+        print(bike_light, "This is Bike_Light_Price")
+        b = float(bike_light)
+        time.sleep(2)
+        Bolt_t_shirt_prices = driver.find_element(By.XPATH, self.Bolt_t_shirt_price)
+        bolt_t_shirt = Bolt_t_shirt_prices.text.replace("$", "")
+        print(bolt_t_shirt, "This is Bolt_t_shirt_price")
+        c = float(bolt_t_shirt)
+        time.sleep(2)
+        Fleece_jacket_prices = driver.find_element(By.XPATH, self.Fleece_jacket_price)
+        fleece_jacket = Fleece_jacket_prices.text.replace("$", "")
+        print(fleece_jacket, "This is Fleece_jacket_price")
+        d = float(fleece_jacket)
+        time.sleep(2)
+        One_sie_prices = driver.find_element(By.XPATH, self.One_sie_price)
+        one_sie = One_sie_prices.text.replace("$", "")
+        print(one_sie, "This is One_sie_prices")
+        e = float(one_sie)
+        time.sleep(2)
+        t_shirt_prices = driver.find_element(By.XPATH, self.T_shirt_red_price)
+        t_shirt = t_shirt_prices.text.replace("$", "")
+        print(t_shirt, "This is the T-shirt Price")
+        time.sleep(3)
+        f = float(t_shirt)
+        time.sleep(3)
+        sum = a + b + c + d + e + f
+        print(sum, "This is the Total Value")
+        driver.execute_script(f"alert('This is the Total Value: {sum}')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
