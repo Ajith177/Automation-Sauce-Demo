@@ -1,28 +1,94 @@
+# import pytest
+# from selenium import webdriver
+# import time
+# from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+#
+#
+# @pytest.fixture(scope="session")
+# def driver():
+#     chrome_options = Options()
+#     chrome_options.add_experimental_option("prefs", {
+#         "credentials_enable_service": False,
+#         "profile.password_manager_enabled": False,
+#         "profile.default_content_setting_values.notifications": 2,
+#         "autofill.profile_enabled": False,
+#         "autofill.credit_card_enabled": False,
+#     })
+#     chrome_options.add_argument("--disable-save-password-bubble")
+#     chrome_options.add_argument("--disable-infobars")
+#     chrome_options.add_argument("--disable-notifications")
+#     chrome_options.add_argument("--disable-popup-blocking")
+#     chrome_options.add_argument("--user-data-dir=/tmp/temporary-profile")
+#     chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
+#
+#     driver = webdriver.Chrome(options=chrome_options)
+#     time.sleep(2)
+#     URL = "https://www.saucedemo.com/"
+#     driver.get(URL)
+#     print(URL, "This is the URL")
+#     time.sleep(10)
+#     driver.maximize_window()
+#
+#     yield driver
+#     driver.quit()
+#
+#
+# @pytest.fixture(scope="session")
+# def api_session():
+#     session = requests.Session()
+#     return session
+#
+
 import pytest
 from selenium import webdriver
-import time
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+import time
+import requests
 
 
 @pytest.fixture(scope="session")
 def driver():
     chrome_options = Options()
+
+    # Optional: Use Incognito for a clean session (no stored warnings)
+    chrome_options.add_argument("--incognito")
+
+    # Disable Chrome's password manager and related popups
     chrome_options.add_experimental_option("prefs", {
         "credentials_enable_service": False,
-        "profile.password_manager_enabled": False
+        "profile.password_manager_enabled": False,
+        "profile.default_content_setting_values.notifications": 2,
+        "autofill.profile_enabled": False,
+        "autofill.credit_card_enabled": False,
+        "profile.default_content_setting_values.popups": 0,
+        "profile.default_content_setting_values.automatic_downloads": 1
     })
+
+    # Extra arguments to suppress password popup and automation banners
+    chrome_options.add_argument("--disable-save-password-bubble")
+    chrome_options.add_argument("--disable-notifications")
+    chrome_options.add_argument("--disable-popup-blocking")
+    chrome_options.add_argument("--disable-infobars")
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+    chrome_options.add_argument("--disable-features=PasswordManagerOnboarding,PasswordCheck")
+
+    # Enable performance logging (optional)
     chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
 
+    # Launch Chrome
     driver = webdriver.Chrome(options=chrome_options)
+    driver.maximize_window()
     time.sleep(2)
+
+    # Navigate to the site
     URL = "https://www.saucedemo.com/"
     driver.get(URL)
     print(URL, "This is the URL")
-    time.sleep(10)
-    driver.maximize_window()
+    time.sleep(5)
+
     yield driver
     driver.quit()
 
@@ -33,7 +99,3 @@ def api_session():
     return session
 
 
-@pytest.fixture(scope="session")
-def api_session():
-    session = requests.Session()
-    return session
