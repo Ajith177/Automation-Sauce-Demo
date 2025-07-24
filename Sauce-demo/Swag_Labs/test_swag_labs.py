@@ -23,9 +23,9 @@ class Test_Swag:
 
     sauce_labs_back_pack = "//button[contains(@id,'add-to-cart-sauce-labs-backpack')]"
     sauce_labs_bike_light = "//button[contains(@id,'add-to-cart-sauce-labs-bike-light')]"
-    sauce_labs_bolt_t_shirt = "//button[contains(@id,'add-to-cart-sauce-labs-bolt-t-shirt')]"
-    sauce_labs_fleece_jacket = "//button[contains(@id,'add-to-cart-sauce-labs-fleece-jacket')]"
-    sauce_labs_onesie = "//button[contains(@id,'add-to-cart-sauce-labs-onesie')]"
+    sauce_labs_bolt_t_shirt = "//button[contains(@name,'add-to-cart-sauce-labs-bolt-t-shirt')]"
+    sauce_labs_fleece_jacket = "//button[contains(@name,'add-to-cart-sauce-labs-fleece-jacket')]"
+    sauce_labs_onesie = "//button[contains(@name,'add-to-cart-sauce-labs-onesie')]"
     sauce_labs_red_t_shirt = "//button[contains(@id,'add-to-cart-test.allthethings()-t-shirt-(red)')]"
 
     click_on_back_to_products="//button[contains(text(),'Back')]"
@@ -97,12 +97,7 @@ class Test_Swag:
     clicked_on_contact="//span[contains(text(),'Contact us')]"
     clicked_on_system_status="//span[contains(text(),'Systems status')]"
 
-
-
-
-
-
-
+    clicked_on_cart_selected="//div[contains(@id,'shopping_cart_container')]"
 
 
 
@@ -167,7 +162,7 @@ class Test_Swag:
     def test_case_thirty(self, driver):
         print("Clicked on the Add to Cart of the Backpack")
         time.sleep(2)
-        driver.execute_script("alert('Clicked the Add to Cart Button in the Backpack')")
+        driver.execute_script("alert('Clicking the Add to Cart Button in the Backpack')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
@@ -186,7 +181,7 @@ class Test_Swag:
     def test_case_thirty_One(self, driver):
         print("Clicked on the Add to Cart of the Bike_light")
         time.sleep(2)
-        driver.execute_script("alert('Clicked the Add to Cart Button in the Bike_Light')")
+        driver.execute_script("alert('Clicking the Add to Cart Button in the Bike_Light')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
@@ -203,14 +198,18 @@ class Test_Swag:
     def test_case_thirty_two(self, driver):
         print("Clicked on the Add to Cart of the Bolt_t_shirt")
         time.sleep(2)
-        driver.execute_script("alert('Clicked the Add to Cart Button in the Bolt_t_shirt')")
+        driver.execute_script("alert('Clicking the Add to Cart Button in the Bolt_t_shirt')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
         alert.accept()
         time.sleep(10)
-        clicked_the_cart_button_bolt_t_shirt = driver.find_element(By.XPATH, self.sauce_labs_bolt_t_shirt).click()
+        clicked_the_cart_button_bolt_t_shirt = driver.find_element(By.XPATH, self.sauce_labs_bolt_t_shirt)
         time.sleep(3)
+        driver.execute_script("arguments[0].scrollIntoView(true);", clicked_the_cart_button_bolt_t_shirt)
+        time.sleep(2)
+        clicked_the_cart_button_bolt_t_shirt.click()
+        time.sleep(2)
         screenshot_file = "Testcase_32.png"
         driver.save_screenshot(screenshot_file)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
@@ -220,14 +219,18 @@ class Test_Swag:
     def test_case_thirty_three(self, driver):
         print("Clicked on the Add to Cart of the Fleece_jacket")
         time.sleep(2)
-        driver.execute_script("alert('Clicked the Add to Cart Button in the Fleece_Jacket')")
+        driver.execute_script("alert('Clicking the Add to Cart Button in the Fleece_Jacket')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
         alert.accept()
         time.sleep(10)
-        clicked_the_cart_button_fleece_jacket = driver.find_element(By.XPATH, self.sauce_labs_fleece_jacket).click()
+        clicked_the_cart_button_fleece_jacket = driver.find_element(By.XPATH, self.sauce_labs_fleece_jacket)
         time.sleep(3)
+        driver.execute_script("arguments[0].scrollIntoView(true);", clicked_the_cart_button_fleece_jacket)
+        time.sleep(2)
+        clicked_the_cart_button_fleece_jacket.click()
+        time.sleep(2)
         screenshot_file = "Testcase_33.png"
         driver.save_screenshot(screenshot_file)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
@@ -237,7 +240,7 @@ class Test_Swag:
     def test_case_thirty_four(self, driver):
         print("Clicked on the Add to Cart of the One_Sie")
         time.sleep(2)
-        driver.execute_script("alert('Clicked the Add to Cart Button in the One_Sie')")
+        driver.execute_script("alert('Clicking the Add to Cart Button in the One_Sie')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
@@ -254,7 +257,7 @@ class Test_Swag:
     def test_case_thirty_five(self, driver):
         print("Clicked on the Add to Cart of the Red_t_shirt")
         time.sleep(2)
-        driver.execute_script("alert('Clicked the Add to Cart Button in the Red_t_Shirt')")
+        driver.execute_script("alert('Clicking the Add to Cart Button in the Red_t_Shirt')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
@@ -271,7 +274,7 @@ class Test_Swag:
     def test_case_thirty_six(self, driver):
         print("Clicked on the Back-pack Product")
         time.sleep(2)
-        driver.execute_script("alert('Clicked on the Back-pack Product')")
+        driver.execute_script("alert('Clicking on the Back-pack Product')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
@@ -292,7 +295,7 @@ class Test_Swag:
     def test_case_thirty_seven(self, driver):
         print("Clicked on the Bike_light Product")
         time.sleep(2)
-        driver.execute_script("alert('Clicked on the Bike_light Product')")
+        driver.execute_script("alert('Clicking on the Bike_light Product')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
@@ -313,7 +316,7 @@ class Test_Swag:
     def test_case_thirty_eight(self, driver):
         print("Clicked on the Bolt_t_shirt Product")
         time.sleep(2)
-        driver.execute_script("alert('Clicked on the Bolt_t_shirt Product')")
+        driver.execute_script("alert('Clicking on the Bolt_t_shirt Product')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
@@ -334,7 +337,7 @@ class Test_Swag:
     def test_case_thirty_nine(self, driver):
         print("Clicked on the fleece_jacket Product")
         time.sleep(2)
-        driver.execute_script("alert('Clicked on the fleece_jacket Product')")
+        driver.execute_script("alert('Clicking on the fleece_jacket Product')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
@@ -353,10 +356,10 @@ class Test_Swag:
 
 
     @pytest.mark.run(order=40)
-    def test_case_forty_one(self, driver):
+    def test_case_forty(self, driver):
         print("Clicked on the One_sie Product")
         time.sleep(2)
-        driver.execute_script("alert('Clicked on the One_sie Product')")
+        driver.execute_script("alert('Clicking on the One_sie Product')")
         time.sleep(3)
         alert = driver.switch_to.alert
         time.sleep(2)
@@ -364,7 +367,7 @@ class Test_Swag:
         time.sleep(3)
         clicked_the_cart_button_One_sie = driver.find_element(By.XPATH, self.click_on_One_sie).click()
         time.sleep(3)
-        screenshot_file = "Testcase_41.png"
+        screenshot_file = "Testcase_40.png"
         driver.save_screenshot(screenshot_file)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
@@ -374,7 +377,7 @@ class Test_Swag:
         time.sleep(2)
 
     @pytest.mark.run(order=41)
-    def test_case_forty_two(self, driver):
+    def test_case_forty_one(self, driver):
         print("Calculating the Total Items Cost Price")
         time.sleep(2)
         driver.execute_script("alert('Calculating the Total Items Cost Price')")
@@ -422,62 +425,67 @@ class Test_Swag:
         time.sleep(2)
         alert.accept()
 
-    @pytest.mark.run(order=43)
-    def test_case_forty_three(self, driver):
-        print("Adding the Values")
-        clicked_on_three_lines=driver.find_element(By.XPATH,self.click_on_three_dots).click()
-        time.sleep(2)
-        clicked_on_about=driver.find_element(By.XPATH,self.click_on_about).click()
-        time.sleep(3)
+    # @pytest.mark.run(order=42)
+    # def test_case_forty_two(self, driver):
+    #     print("Adding the Values")
+    #     clicked_on_three_lines=driver.find_element(By.XPATH,self.click_on_three_dots).click()
+    #     time.sleep(2)
+    #     clicked_on_about=driver.find_element(By.XPATH,self.click_on_about).click()
+    #     time.sleep(3)
+    #
+    # @pytest.mark.run(order=43)
+    # def test_case_forty_three(self, driver):
+    #     print(Fore.MAGENTA,"clicked on Web Testing")
+    #     time.sleep(2)
+    #     driver.execute_script("alert('Clicked on the web Testing')")
+    #     time.sleep(3)
+    #     alert = driver.switch_to.alert
+    #     time.sleep(2)
+    #     alert.accept()
+    #     time.sleep(3)
+    #     clicked_on_web_testing=driver.find_element(By.XPATH,self.clicked_on_Web_testing)
+    #     time.sleep(2)
+    #
+    # @pytest.mark.run(order=44)
+    # def test_case_forty_four(self, driver):
+    #     print(Fore.MAGENTA, "clicked on AI Powered Insights")
+    #     time.sleep(2)
+    #     driver.execute_script("alert('Clicked on the AI Powered Insights')")
+    #     time.sleep(3)
+    #     alert = driver.switch_to.alert
+    #     time.sleep(2)
+    #     alert.accept()
+    #     time.sleep(3)
+    #     clicked_on_AI_Powered_Insights=driver.find_element(By.XPATH,self.clicked_on_AI_Powered_Insights).click()
+    #     time.sleep(2)
+    #
+    # @pytest.mark.run(order=45)
+    # def test_case_forty_five(self, driver):
+    #     print(Fore.MAGENTA, "clicked on Mobile App Testing")
+    #     time.sleep(2)
+    #     driver.execute_script("alert('Clicked on the Mobile App Testing')")
+    #     time.sleep(3)
+    #     alert = driver.switch_to.alert
+    #     time.sleep(2)
+    #     alert.accept()
+    #     time.sleep(3)
+    #     clicked_on_Mobile_App_Testing=driver.find_element(By.XPATH,self.clicked_on_Mobile_App_Testing).click()
+    #     time.sleep(2)
+    #
+    # @pytest.mark.run(order=46)
+    # def test_case_forty_six(self, driver):
+    #     print(Fore.MAGENTA, "clicked on Mobile App Distribution")
+    #     time.sleep(2)
+    #     driver.execute_script("alert('Clicked on the Mobile App Distribution')")
+    #     time.sleep(3)
+    #     alert = driver.switch_to.alert
+    #     time.sleep(2)
+    #     alert.accept()
+    #     time.sleep(3)
+    #     clicked_on_Mobile_App_Distribution=driver.find_element(By.XPATH,self.clicked_on_Mobile_App_Distribution).click()
+    #     time.sleep(2)
+    #
+    # @pytest.mark.run(order=47)
+    # def test_case_forty_seven(self, driver):
+    #     print(Fore.BLUE,"")
 
-    @pytest.mark.run(order=44)
-    def test_case_forty_three(self, driver):
-        print(Fore.MAGENTA,"clicked on Web Testing")
-        time.sleep(2)
-        driver.execute_script("alert('Clicked on the web Testing')")
-        time.sleep(3)
-        alert = driver.switch_to.alert
-        time.sleep(2)
-        alert.accept()
-        time.sleep(3)
-        clicked_on_web_testing=driver.find_element(By.XPATH,self.clicked_on_Web_testing)
-        time.sleep(2)
-
-    @pytest.mark.run(order=45)
-    def test_case_forty_three(self, driver):
-        print(Fore.MAGENTA, "clicked on AI Powered Insights")
-        time.sleep(2)
-        driver.execute_script("alert('Clicked on the AI Powered Insights')")
-        time.sleep(3)
-        alert = driver.switch_to.alert
-        time.sleep(2)
-        alert.accept()
-        time.sleep(3)
-        clicked_on_AI_Powered_Insights=driver.find_element(By.XPATH,self.clicked_on_AI_Powered_Insights).click()
-        time.sleep(2)
-
-    @pytest.mark.run(order=46)
-    def test_case_forty_three(self, driver):
-        print(Fore.MAGENTA, "clicked on Mobile App Testing")
-        time.sleep(2)
-        driver.execute_script("alert('Clicked on the Mobile App Testing')")
-        time.sleep(3)
-        alert = driver.switch_to.alert
-        time.sleep(2)
-        alert.accept()
-        time.sleep(3)
-        clicked_on_Mobile_App_Testing=driver.find_element(By.XPATH,self.clicked_on_Mobile_App_Testing).click()
-        time.sleep(2)
-
-    @pytest.mark.run(order=47)
-    def test_case_forty_three(self, driver):
-        print(Fore.MAGENTA, "clicked on Mobile App Distribution")
-        time.sleep(2)
-        driver.execute_script("alert('Clicked on the Mobile App Distribution')")
-        time.sleep(3)
-        alert = driver.switch_to.alert
-        time.sleep(2)
-        alert.accept()
-        time.sleep(3)
-        clicked_on_Mobile_App_Distribution=driver.find_element(By.XPATH,self.clicked_on_Mobile_App_Distribution).click()
-        time.sleep(2)

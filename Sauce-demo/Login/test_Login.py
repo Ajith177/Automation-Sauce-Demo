@@ -631,14 +631,6 @@ class Test_Login:
         time.sleep(5)
         driver.refresh()
         time.sleep(2)
-        # try:
-        #     popup_ok_button = WebDriverWait(driver, 5).until(
-        #         EC.element_to_be_clickable((By.XPATH, "//button[text()='OK']"))
-        #     )
-        #     popup_ok_button.click()
-        #     print("Popup handled.")
-        # except Exception as e:
-        #     print("Popup not found or already handled:", e)
         time.sleep(3)
         driver.execute_script("alert('In the Swag labs Cart Page')")
         time.sleep(3)
