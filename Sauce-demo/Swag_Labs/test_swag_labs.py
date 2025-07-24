@@ -98,6 +98,17 @@ class Test_Swag:
     clicked_on_system_status="//span[contains(text(),'Systems status')]"
 
     clicked_on_cart_selected="//div[contains(@id,'shopping_cart_container')]"
+    continue_shopping="//button[contains(text(),'Continue Shopping')]"
+    check_out="//button[contains(text(),'Checkout')]"
+    first_name_input="//input[contains(@id,'first-name')]"
+    last_name_input="//input[contains(@id,'last-name')]"
+    postal_code_input="//input[contains(@id,'postal-code')]"
+    continue_button_on_check_out="//input[contains(@id,'continue')]"
+
+    finish_button="//button[contains(text(),'Finish')]"
+    Cancel_button="//button[contains(text(),'Cancel')]"
+
+
 
 
 
@@ -424,6 +435,599 @@ class Test_Swag:
         alert = driver.switch_to.alert
         time.sleep(2)
         alert.accept()
+
+    @pytest.mark.run(order=42)
+    def test_case_forty_two(self, driver):
+        print(Fore.CYAN,"Clicking the Cart Icon")
+        time.sleep(2)
+        click_cart_icon=driver.find_element(By.XPATH,self.clicked_on_cart_selected).click()
+        time.sleep(3)
+        click_on_continue_shopping=driver.find_element(By.XPATH,self.continue_shopping).click()
+        time.sleep(3)
+
+    @pytest.mark.run(order=43)
+    def test_case_forty_three(self, driver):
+        print(Fore.BLUE,"Again Clicking on the Cart Icon")
+        time.sleep(2)
+        click_cart_icon=driver.find_element(By.XPATH,self.clicked_on_cart_selected).click()
+        time.sleep(2)
+        click_on_check_out=driver.find_element(By.XPATH,self.check_out).click()
+        time.sleep(3)
+        driver.execute_script("alert('Now Moving to the Check-out Pages')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+
+    @pytest.mark.run(order=44)
+    def test_case_forty_four(self, driver):
+        print(Fore.MAGENTA,"Entering the Inputs for the Check-out")
+        time.sleep(2)
+        driver.execute_script("alert('Entering the Inputs for the Check-out --> First name input length less than 5 (Only small letters)')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(2)
+        entering_the_first_name=driver.find_element(By.XPATH,self.first_name_input).send_keys("a")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button=driver.find_element(By.XPATH,self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=45)
+    def test_case_forty_five(self, driver):
+        print(Fore.BLUE,"First name input equal to length =5")
+        time.sleep(2)
+        driver.execute_script("alert('First name Input length equal to 5 (Small letters)')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("demoq")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=46)
+    def test_case_forty_six(self, driver):
+        print(Fore.BLUE, "First name input equal to length > 5")
+        time.sleep(2)
+        driver.execute_script("alert('First name Input length greater than 5 (Small letters)')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("demoqufiurbfrfhrfhrfhurhfiu")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=47)
+    def test_case_forty_seven(self, driver):
+        print(Fore.BLUE, "First name input equal to length < 5 (Capital letters)")
+        time.sleep(2)
+        driver.execute_script("alert('First name Input length less than 5 (Capital letters)')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
+            "DEMO")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=48)
+    def test_case_forty_eight(self, driver):
+        print(Fore.BLUE, "First name input equal to length > 5 (Capital letters)")
+        time.sleep(2)
+        driver.execute_script("alert('First name Input length Greater than 5 (Capital letters)')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
+            "DEMOIUHFFRFRFJKNRFRFHIO")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=49)
+    def test_case_forty_nine(self, driver):
+        print(Fore.BLUE, "First name input (Special Characters)")
+        time.sleep(2)
+        driver.execute_script("alert('First name Input length less than 5 (Special Characters)')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
+            "$%^&")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=50)
+    def test_case_fifty(self, driver):
+        print(Fore.BLUE, "First name input (Special Characters)")
+        time.sleep(2)
+        driver.execute_script("alert('First name Input length Greater than 5 (Special Characters)')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
+            "$%^&#$%^^&*^&*")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=51)
+    def test_case_fifty_one(self, driver):
+        print(Fore.BLUE, "First name input (Small & Capital letters)")
+        time.sleep(2)
+        driver.execute_script("alert('First name Input Combination of (Small & Capital letters) each 1')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
+            "aS")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=51)
+    def test_case_fifty_one(self, driver):
+        print(Fore.BLUE, "First name input (Small & Capital letters)")
+        time.sleep(2)
+        driver.execute_script("alert('First name Input Combination of (Small & Capital letters) each 1')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
+            "aS")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=52)
+    def test_case_fifty_two(self, driver):
+        print(Fore.BLUE, "First name input (Small & Capital letters)")
+        time.sleep(2)
+        driver.execute_script("alert('First name Input Combination of (Small & Capital letters) length less than 5')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
+            "aSdF")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=53)
+    def test_case_fifty_three(self, driver):
+        print(Fore.BLUE, "First name input (Small & Capital letters)")
+        time.sleep(2)
+        driver.execute_script("alert('First name Input Combination of (Small & Capital letters) length Greater than 5')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
+            "aSdFjhfhrifirfjrjriofTFTED")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=54)
+    def test_case_fifty_four(self, driver):
+        print(Fore.BLUE, "First name input (Small & Capital letters & Special Characters)")
+        time.sleep(2)
+        driver.execute_script(
+            "alert('First name Input Combination of (Small & Capital letters & Special Characters) length less than 5')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
+            "aSd&")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=55)
+    def test_case_fifty_five(self, driver):
+        print(Fore.BLUE, "First name input (Small & Capital letters & Special Characters)")
+        time.sleep(2)
+        driver.execute_script(
+            "alert('First name Input Combination of (Small & Capital letters & Special Characters) length Greater than 5')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
+            "aSd&hbfhruHEHBD#$%^&*(")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=56)
+    def test_case_fifty_six(self, driver):
+        print(Fore.BLUE, "Moving to the last-name Input less than 2")
+        time.sleep(2)
+        entering_the_first_name=driver.find_element(By.XPATH,self.first_name_input).send_keys("Demo-user")
+        time.sleep(2)
+        driver.execute_script(
+            "alert('Last name Input of Giving the Small Characters length less than 2')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_last_name=driver.find_element(By.XPATH,self.last_name_input).send_keys("r")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=57)
+    def test_case_fifty_seven(self, driver):
+        print(Fore.BLUE, "Moving to the last-name Input less than 10")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
+        time.sleep(2)
+        driver.execute_script(
+            "alert('Last name Input of Giving the Small Characters length less than 10')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys("rijie")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=58)
+    def test_case_fifty_eight(self, driver):
+        print(Fore.BLUE, "Moving to the last-name Input less than 5")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
+        time.sleep(2)
+        driver.execute_script(
+            "alert('Last name Input of Giving the Capital Characters length less than 5')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys("HSHS")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=59)
+    def test_case_fifty_nine(self, driver):
+        print(Fore.BLUE, "Moving to the last-name Input Greater than 5")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
+        time.sleep(2)
+        driver.execute_script(
+            "alert('Last name Input of Giving the Capital Characters length Greater than 5')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys("HSHSKJRNFJRFN")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=60)
+    def test_case_sixty(self, driver):
+        print(Fore.BLUE, "Moving to the last-name Input Special Characters")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
+        time.sleep(2)
+        driver.execute_script(
+            "alert('Last name Input of Giving the Special Characters length less than 5')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys("#$%^")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=61)
+    def test_case_sixty_one(self, driver):
+        print(Fore.BLUE, "Moving to the last-name Input Special Characters")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
+        time.sleep(2)
+        driver.execute_script(
+            "alert('Last name Input of Giving the Special Characters length Greater than 5')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys("#$%^$%^&*(")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=62)
+    def test_case_sixty_two(self, driver):
+        print(Fore.BLUE, "Moving to the last-name Input Special & Small Characters")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
+        time.sleep(2)
+        driver.execute_script(
+            "alert('Last name Input of Giving the Special & Small  Characters length less than 10')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys("#$%uhdiudh")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=63)
+    def test_case_sixty_three(self, driver):
+        print(Fore.BLUE, "Moving to the last-name Input Special & Small Characters")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
+        time.sleep(2)
+        driver.execute_script(
+            "alert('Last name Input of Giving the Special & Small  Characters length Greater than 10')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys("#$%uhd$%^ud#@#iudh")
+        time.sleep(2)
+        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(2)
+        driver.refresh()
+
+    @pytest.mark.run(order=64)
+    def test_case_sixty_four(self, driver):
+        print(Fore.BLUE, "Moving to the Input of the Postal-code")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
+        time.sleep(2)
+        entering_the_last_name=driver.find_element(By.XPATH,self.last_name_input).send_keys("Users")
+        driver.execute_script(
+            "alert('Giving the Characters (Alphabets) as a Input in the Postal-code')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+        entering_the_values_on_postal_code=driver.find_element(By.XPATH,self.postal_code_input).send_keys("a")
+        time.sleep(2)
+
+    @pytest.mark.run(order=65)
+    def test_case_sixty_five(self, driver):
+        driver.execute_script(
+            "alert('There is No Validation for the Postal Code.')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     # @pytest.mark.run(order=42)
     # def test_case_forty_two(self, driver):
