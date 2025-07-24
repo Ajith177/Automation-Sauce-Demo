@@ -4,12 +4,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
 from colorama import Fore
-from Login_Module.test_login_helper import LoginHelper
+from Login.test_login_helper import LoginHelper
 import shutil
 import os
 import pytest
 from urllib3.poolmanager import key_fn_by_scheme
-from Login_Module.test_login_helper import LoginHelper
+from Login.test_login_helper import LoginHelper
 
 
 class Test_Swag:
@@ -20,13 +20,6 @@ class Test_Swag:
     click_on_Log_out="//a[contains(text(),'Logout')]"
     click_on_reset_app_state="//a[contains(text(),'Reset')]"
     close_btn_side_bar="//button[contains(@id,'react-burger-cross-btn')]"
-
-    # sauce_labs_back_pack="(//button[contains(text(),'Add to cart')])[1]"
-    # sauce_labs_bike_light="(//button[contains(text(),'Add to cart')])[2]"
-    # sauce_labs_bolt_t_shirt="(//button[contains(text(),'Add to cart')])[3]"
-    # sauce_labs_fleece_jacket="(//button[contains(text(),'Add to cart')])[4]"
-    # sauce_labs_onesie="(//button[contains(text(),'Add to cart')])[5]"
-    # sauce_labs_red_t_shirt="(//button[contains(text(),'Add to cart')])[6]"
 
     sauce_labs_back_pack = "//button[contains(@id,'add-to-cart-sauce-labs-backpack')]"
     sauce_labs_bike_light = "//button[contains(@id,'add-to-cart-sauce-labs-bike-light')]"
