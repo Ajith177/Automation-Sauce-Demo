@@ -205,7 +205,7 @@ class Test_Swag:
         time.sleep(2)
         clicked_the_cart_button_bike_light = driver.find_element(By.XPATH, self.sauce_labs_bike_light).click()
         time.sleep(3)
-        screenshot_file = "Testcase_30.png"
+        screenshot_file = "Testcase_31.png"
         driver.save_screenshot(screenshot_file)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
@@ -449,6 +449,10 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_shopping=driver.find_element(By.XPATH,self.continue_shopping).click()
         time.sleep(3)
+        screenshot_file = "Testcase_42.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+        time.sleep(2)
 
     @pytest.mark.run(order=43)
     def test_case_forty_three(self, driver):
@@ -463,6 +467,10 @@ class Test_Swag:
         alert = driver.switch_to.alert
         time.sleep(2)
         alert.accept()
+        screenshot_file = "Testcase_43.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+        time.sleep(2)
 
     @pytest.mark.run(order=44)
     def test_case_forty_four(self, driver):
@@ -488,6 +496,10 @@ class Test_Swag:
         time.sleep(2)
         entering_the_first_name=driver.find_element(By.XPATH,self.first_name_input).send_keys(Keys.BACKSPACE)
         time.sleep(2)
+        screenshot_file = "Testcase_44.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+        time.sleep(2)
 
     @pytest.mark.run(order=45)
     def test_case_forty_five(self, driver):
@@ -512,6 +524,10 @@ class Test_Swag:
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
+        screenshot_file = "Testcase_45.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
 
@@ -539,6 +555,10 @@ class Test_Swag:
         time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
         time.sleep(2)
+        screenshot_file = "Testcase_46.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+        time.sleep(2)
 
     @pytest.mark.run(order=47)
     def test_case_forty_seven(self, driver):
@@ -564,6 +584,10 @@ class Test_Swag:
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
+        screenshot_file = "Testcase_47.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
     @pytest.mark.run(order=48)
@@ -591,6 +615,10 @@ class Test_Swag:
         time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
         time.sleep(2)
+        screenshot_file = "Testcase_48.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+        time.sleep(2)
 
     @pytest.mark.run(order=49)
     def test_case_forty_nine(self, driver):
@@ -616,6 +644,10 @@ class Test_Swag:
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
+        screenshot_file = "Testcase_49.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
     @pytest.mark.run(order=50)
@@ -643,6 +675,10 @@ class Test_Swag:
         time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
         time.sleep(2)
+        screenshot_file = "Testcase_50.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+        time.sleep(2)
 
     @pytest.mark.run(order=51)
     def test_case_fifty_one(self, driver):
@@ -669,31 +705,9 @@ class Test_Swag:
         time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
         time.sleep(2)
-
-    @pytest.mark.run(order=51)
-    def test_case_fifty_one(self, driver):
-        print(Fore.BLUE, "First name input (Small & Capital letters)")
-        time.sleep(2)
-        driver.execute_script("alert('First name Input Combination of (Small & Capital letters) each 1')")
-        time.sleep(2)
-        alert = driver.switch_to.alert
-        time.sleep(2)
-        alert.accept()
-        time.sleep(3)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
-            "aS")
-        time.sleep(2)
-        driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
-        time.sleep(2)
-        alert = driver.switch_to.alert
-        time.sleep(2)
-        alert.accept()
-        time.sleep(3)
-        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
-        time.sleep(3)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
-        time.sleep(2)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        screenshot_file = "Testcase_51.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
     @pytest.mark.run(order=52)
@@ -721,6 +735,10 @@ class Test_Swag:
         time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
         time.sleep(2)
+        screenshot_file = "Testcase_52.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
+        time.sleep(2)
 
     @pytest.mark.run(order=53)
     def test_case_fifty_three(self, driver):
@@ -746,6 +764,10 @@ class Test_Swag:
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
+        screenshot_file = "Testcase_53.png"
+        driver.save_screenshot(screenshot_file)
+        shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
 
@@ -1066,6 +1088,74 @@ class Test_Swag:
         time.sleep(4)
         click_on_login_button=driver.find_element(By.XPATH,self.login_button).click()
         time.sleep(3)
+
+    @pytest.mark.run(order=67)
+    def test_case_sixty_seven(self, driver):
+        print(Fore.GREEN,"Again clicking on the cart Button")
+        time.sleep(2)
+        clicking_on_the_cart_selected=driver.find_element(By.XPATH,self.clicked_on_cart_selected).click()
+        time.sleep(3)
+        print(Fore.BLACK,"Clicking on Check-out this Item")
+        time.sleep(3)
+        click_on_check_out=driver.find_element(By.XPATH,self.check_out).click()
+        time.sleep(3)
+        driver.execute_script(
+            "alert('In the Check-out page --> Filling the details')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+
+    @pytest.mark.run(order=68)
+    def test_case_sixty_eight(self, driver):
+        print(Fore.CYAN,"Filling the Inputs of the First & Last name")
+        time.sleep(3)
+        entering_first_name=driver.find_element(By.XPATH,self.first_name_input).send_keys("DEMO_USER")
+        time.sleep(3)
+        entering_last_name=driver.find_element(By.XPATH,self.last_name_input).send_keys("hded")
+        time.sleep(3)
+        entering_postal_code=driver.find_element(By.XPATH,self.postal_code_input).send_keys("12345")
+        time.sleep(3)
+        click_on_continue_button=driver.find_element(By.XPATH,self.continue_button_on_check_out).click()
+        time.sleep(3)
+        print(Fore.LIGHTMAGENTA_EX,"Now Clicking on the Cancel Button")
+        time.sleep(3)
+        driver.execute_script(
+            "alert('Clicking the Cancel Button..')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(4)
+        click_on_cancel_button=driver.find_element(By.XPATH,self.Cancel_button).click()
+        time.sleep(3)
+
+    @pytest.mark.run(order=69)
+    def test_case_sixty_nine(self, driver):
+        print(Fore.LIGHTYELLOW_EX,"Again Clicking on the Cart Container...")
+        time.sleep(4)
+        driver.execute_script(
+            "alert('Clicking on the Cart Container...')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
