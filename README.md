@@ -17,5 +17,38 @@ It's a foundational test suite that will be expanded to cover more scenarios as 
 
 📁 Project Structure
 
-Coming Soon....
+Automation-Sauce-Demo/
+│
+├── Sauce-demo/                 # Main source folder (contains modules)
+│   ├── Login/                  # Login-related page and test classes
+│   └── Swag_Labs/              # Main test cases including cart functionality
+│
+├── __pycache__/                # Python cache (ignore in versioning)
+│
+├── conftest.py                 # PyTest fixtures for setup and teardown
+├── test_suite.py               # Entry point to run grouped tests
+└── README.md                   # Project documentation
+
+
+🧪 How to Run Tests
+
+
+1) Clone the repo
+   *) git clone https://github.com/Ajith177/Automation-Sauce-Demo.git
+   *)cd Automation-Sauce-Demo
+
+2) Install dependencies
+   *) pip install -r requirements.txt
+
+3) Run all test cases
+   *)pytest test_suite.py -v
+
+   
+🧠 Upcoming Features................................
+
+*) Cross-browser testing support
+*) Jenkins Pipeline Integration
+*) Checkout flow automation
+
+
 
