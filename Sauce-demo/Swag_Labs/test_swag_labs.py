@@ -10,6 +10,7 @@ import os
 import pytest
 from urllib3.poolmanager import key_fn_by_scheme
 from Login.test_login_helper import LoginHelper
+from selenium.common.exceptions import UnexpectedAlertPresentException
 
 
 class Test_Swag:
@@ -744,6 +745,8 @@ class Test_Swag:
         time.sleep(2)
         alert.accept()
         time.sleep(3)
+        driver.refresh()
+        time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
             "aSd&hbfhruHEHBD#$%^&*(")
         time.sleep(2)
@@ -770,6 +773,8 @@ class Test_Swag:
         time.sleep(2)
         alert.accept()
         time.sleep(3)
+        driver.refresh()
+        time.sleep(2)
         entering_last_name=driver.find_element(By.XPATH,self.last_name_input).send_keys("r")
         time.sleep(2)
         driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
@@ -785,7 +790,7 @@ class Test_Swag:
     @pytest.mark.run(order=57)
     def test_case_fifty_seven(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input less than 10")
-        time.sleep(2)
+        time.sleep(5)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
         time.sleep(2)
         driver.execute_script(
@@ -810,7 +815,7 @@ class Test_Swag:
     @pytest.mark.run(order=58)
     def test_case_fifty_eight(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input less than 5")
-        time.sleep(2)
+        time.sleep(5)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
         time.sleep(2)
         driver.execute_script(
@@ -835,7 +840,7 @@ class Test_Swag:
     @pytest.mark.run(order=59)
     def test_case_fifty_nine(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input Greater than 5")
-        time.sleep(2)
+        time.sleep(5)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
         time.sleep(2)
         driver.execute_script(
@@ -860,7 +865,7 @@ class Test_Swag:
     @pytest.mark.run(order=60)
     def test_case_sixty(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input Special Characters")
-        time.sleep(2)
+        time.sleep(5)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
         time.sleep(2)
         driver.execute_script(
@@ -885,7 +890,7 @@ class Test_Swag:
     @pytest.mark.run(order=61)
     def test_case_sixty_one(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input Special Characters")
-        time.sleep(2)
+        time.sleep(5)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
         time.sleep(2)
         driver.execute_script(
@@ -910,7 +915,7 @@ class Test_Swag:
     @pytest.mark.run(order=62)
     def test_case_sixty_two(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input Special & Small Characters")
-        time.sleep(2)
+        time.sleep(5)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
         time.sleep(2)
         driver.execute_script(
@@ -935,7 +940,7 @@ class Test_Swag:
     @pytest.mark.run(order=63)
     def test_case_sixty_three(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input Special & Small Characters")
-        time.sleep(2)
+        time.sleep(5)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
         time.sleep(2)
         driver.execute_script(
@@ -960,7 +965,7 @@ class Test_Swag:
     @pytest.mark.run(order=64)
     def test_case_sixty_four(self, driver):
         print(Fore.BLUE, "Moving to the Input of the Postal-code")
-        time.sleep(2)
+        time.sleep(5)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
         time.sleep(2)
         entering_the_last_name=driver.find_element(By.XPATH,self.last_name_input).send_keys("Users")
@@ -976,6 +981,7 @@ class Test_Swag:
 
     @pytest.mark.run(order=65)
     def test_case_sixty_five(self, driver):
+        time.sleep(2)
         driver.execute_script(
             "alert('There is No Validation for the Postal Code.')")
         time.sleep(2)
@@ -983,6 +989,59 @@ class Test_Swag:
         time.sleep(2)
         alert.accept()
         time.sleep(3)
+
+    @pytest.mark.run(order=66)
+    def test_case_sixty_six(self, driver):
+        print(Fore.MAGENTA,"In the Total Page (Items and Its prices")
+        time.sleep(2)
+        click_on_cancel_button=driver.find_element(By.XPATH,self.Cancel_button).click()
+        time.sleep(2)
+        driver.execute_script(
+            "alert('Cancel button is get Clicked......')")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert.accept()
+        time.sleep(5)
+        driver.execute_script("window.confirm('If it is in Item selection page Press OK -> Button, else press -> Cancel Button');")
+        time.sleep(2)
+        alert = driver.switch_to.alert
+        time.sleep(2)
+        alert_text=alert.text
+        time.sleep(2)
+        alert_response = alert.dismiss() if alert_text else alert.accept()
+        time.sleep(3)
+        if alert_text:
+            time.sleep(3)
+            driver.execute_script(
+                "alert('User clicked on the OK Button Procedding with further Test............')")
+            time.sleep(2)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            time.sleep(3)
+            print(Fore.GREEN, "User Clicked on ok Button Proceeding further....")
+        else:
+            time.sleep(3)
+            driver.execute_script(
+                "alert('User clicked on the Cancel Button, stopping the test....')")
+            time.sleep(2)
+            alert = driver.switch_to.alert
+            time.sleep(2)
+            alert.accept()
+            print(Fore.RED, "User clicked on cancel Button stopping the test......")
+            driver.quit()
+            sys.exit()
+
+
+
+
+
+
+
+
+
+
 
 
 
