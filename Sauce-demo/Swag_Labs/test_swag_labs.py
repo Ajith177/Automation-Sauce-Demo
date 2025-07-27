@@ -109,6 +109,10 @@ class Test_Swag:
     finish_button="//button[contains(text(),'Finish')]"
     Cancel_button="//button[contains(text(),'Cancel')]"
 
+    email_input = "//input[contains(@placeholder,'Username')]"
+    password_input = "//input[contains(@placeholder,'Password')]"
+    login_button = "//input[contains(@name,'login-button')]"
+
 
 
 
@@ -480,7 +484,10 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button=driver.find_element(By.XPATH,self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name=driver.find_element(By.XPATH,self.first_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_the_first_name=driver.find_element(By.XPATH,self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=45)
     def test_case_forty_five(self, driver):
@@ -502,7 +509,11 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
+
 
     @pytest.mark.run(order=46)
     def test_case_forty_six(self, driver):
@@ -524,7 +535,10 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=47)
     def test_case_forty_seven(self, driver):
@@ -547,7 +561,10 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=48)
     def test_case_forty_eight(self, driver):
@@ -570,7 +587,10 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=49)
     def test_case_forty_nine(self, driver):
@@ -593,7 +613,10 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=50)
     def test_case_fifty(self, driver):
@@ -616,7 +639,10 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=51)
     def test_case_fifty_one(self, driver):
@@ -639,7 +665,10 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=51)
     def test_case_fifty_one(self, driver):
@@ -661,8 +690,11 @@ class Test_Swag:
         alert.accept()
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=52)
     def test_case_fifty_two(self, driver):
@@ -685,7 +717,10 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=53)
     def test_case_fifty_three(self, driver):
@@ -707,8 +742,12 @@ class Test_Swag:
         alert.accept()
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
+
 
     @pytest.mark.run(order=54)
     def test_case_fifty_four(self, driver):
@@ -731,8 +770,11 @@ class Test_Swag:
         alert.accept()
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=55)
     def test_case_fifty_five(self, driver):
@@ -745,8 +787,6 @@ class Test_Swag:
         time.sleep(2)
         alert.accept()
         time.sleep(3)
-        driver.refresh()
-        time.sleep(2)
         entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(
             "aSd&hbfhruHEHBD#$%^&*(")
         time.sleep(2)
@@ -757,8 +797,11 @@ class Test_Swag:
         alert.accept()
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(3)
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
-        driver.refresh()
+        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=56)
     def test_case_fifty_six(self, driver):
@@ -773,8 +816,6 @@ class Test_Swag:
         time.sleep(2)
         alert.accept()
         time.sleep(3)
-        driver.refresh()
-        time.sleep(2)
         entering_last_name=driver.find_element(By.XPATH,self.last_name_input).send_keys("r")
         time.sleep(2)
         driver.execute_script("alert('Checking moving to next page or Not By clicking the Continue Button')")
@@ -785,14 +826,15 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_last_name=driver.find_element(By.XPATH,self.last_name_input).send_keys(Keys.CONTROL +"a")
+        time.sleep(2)
+        entering_last_name=driver.find_element(By.XPATH,self.last_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=57)
     def test_case_fifty_seven(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input less than 10")
         time.sleep(5)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
-        time.sleep(2)
         driver.execute_script(
             "alert('Last name Input of Giving the Small Characters length less than 10')")
         time.sleep(2)
@@ -809,15 +851,16 @@ class Test_Swag:
         alert.accept()
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
-        driver.refresh()
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=58)
     def test_case_fifty_eight(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input less than 5")
         time.sleep(5)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
-        time.sleep(2)
         driver.execute_script(
             "alert('Last name Input of Giving the Capital Characters length less than 5')")
         time.sleep(2)
@@ -834,15 +877,16 @@ class Test_Swag:
         alert.accept()
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
-        driver.refresh()
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=59)
     def test_case_fifty_nine(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input Greater than 5")
         time.sleep(5)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
-        time.sleep(2)
         driver.execute_script(
             "alert('Last name Input of Giving the Capital Characters length Greater than 5')")
         time.sleep(2)
@@ -860,14 +904,15 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=60)
     def test_case_sixty(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input Special Characters")
         time.sleep(5)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
-        time.sleep(2)
         driver.execute_script(
             "alert('Last name Input of Giving the Special Characters length less than 5')")
         time.sleep(2)
@@ -885,14 +930,15 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=61)
     def test_case_sixty_one(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input Special Characters")
         time.sleep(5)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
-        time.sleep(2)
         driver.execute_script(
             "alert('Last name Input of Giving the Special Characters length Greater than 5')")
         time.sleep(2)
@@ -909,15 +955,16 @@ class Test_Swag:
         alert.accept()
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
-        driver.refresh()
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=62)
     def test_case_sixty_two(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input Special & Small Characters")
         time.sleep(5)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
-        time.sleep(2)
         driver.execute_script(
             "alert('Last name Input of Giving the Special & Small  Characters length less than 10')")
         time.sleep(2)
@@ -935,14 +982,15 @@ class Test_Swag:
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
         time.sleep(2)
-        driver.refresh()
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.CONTROL + "a")
+        time.sleep(2)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=63)
     def test_case_sixty_three(self, driver):
         print(Fore.BLUE, "Moving to the last-name Input Special & Small Characters")
         time.sleep(5)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
-        time.sleep(2)
         driver.execute_script(
             "alert('Last name Input of Giving the Special & Small  Characters length Greater than 10')")
         time.sleep(2)
@@ -959,16 +1007,18 @@ class Test_Swag:
         alert.accept()
         time.sleep(3)
         click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.CONTROL + "a")
         time.sleep(2)
-        driver.refresh()
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys(Keys.BACKSPACE)
+        time.sleep(2)
 
     @pytest.mark.run(order=64)
     def test_case_sixty_four(self, driver):
         print(Fore.BLUE, "Moving to the Input of the Postal-code")
         time.sleep(5)
-        entering_the_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("Demo-user")
-        time.sleep(2)
         entering_the_last_name=driver.find_element(By.XPATH,self.last_name_input).send_keys("Users")
+        time.sleep(2)
         driver.execute_script(
             "alert('Giving the Characters (Alphabets) as a Input in the Postal-code')")
         time.sleep(2)
@@ -1003,35 +1053,19 @@ class Test_Swag:
         time.sleep(2)
         alert.accept()
         time.sleep(5)
-        driver.execute_script("window.confirm('If it is in Item selection page Press OK -> Button, else press -> Cancel Button');")
+        driver.execute_script(
+            "alert('It get moved to the Login page... Expected Behaviour..')")
         time.sleep(2)
         alert = driver.switch_to.alert
         time.sleep(2)
-        alert_text=alert.text
-        time.sleep(2)
-        alert_response = alert.dismiss() if alert_text else alert.accept()
+        alert.accept()
+        time.sleep(4)
+        entering_the_user_name=driver.find_element(By.XPATH,self.email_input).send_keys("error_user")
         time.sleep(3)
-        if alert_text:
-            time.sleep(3)
-            driver.execute_script(
-                "alert('User clicked on the OK Button Procedding with further Test............')")
-            time.sleep(2)
-            alert = driver.switch_to.alert
-            time.sleep(2)
-            alert.accept()
-            time.sleep(3)
-            print(Fore.GREEN, "User Clicked on ok Button Proceeding further....")
-        else:
-            time.sleep(3)
-            driver.execute_script(
-                "alert('User clicked on the Cancel Button, stopping the test....')")
-            time.sleep(2)
-            alert = driver.switch_to.alert
-            time.sleep(2)
-            alert.accept()
-            print(Fore.RED, "User clicked on cancel Button stopping the test......")
-            driver.quit()
-            sys.exit()
+        entering_the_password=driver.find_element(By.XPATH,self.password_input).send_keys("secret_sauce")
+        time.sleep(4)
+        click_on_login_button=driver.find_element(By.XPATH,self.login_button).click()
+        time.sleep(3)
 
 
 
