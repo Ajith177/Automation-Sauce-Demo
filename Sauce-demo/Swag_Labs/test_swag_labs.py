@@ -1145,6 +1145,23 @@ class Test_Swag:
         click_on_check_out=driver.find_element(By.XPATH,self.check_out).click()
         time.sleep(3)
 
+    @pytest.mark.run(order=70)
+    def test_case_sixty_nine(self, driver):
+        time.sleep(4)
+        entering_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("DEMO_USER")
+        time.sleep(3)
+        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys("hded")
+        time.sleep(3)
+        entering_postal_code = driver.find_element(By.XPATH, self.postal_code_input).send_keys("12345")
+        time.sleep(3)
+        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
+        time.sleep(3)
+        print(Fore.BLACK,"Clicked the Continue Button")
+
+
+
+
+
 
 
 
