@@ -1142,6 +1142,11 @@ class Test_Swag:
         time.sleep(2)
         alert.accept()
         time.sleep(3)
+        click_on_check_out=driver.find_element(By.XPATH,self.check_out).click()
+        time.sleep(3)
+
+
+
 
 
 
