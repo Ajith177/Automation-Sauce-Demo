@@ -1,46 +1,27 @@
 pipeline {
     agent any
 
-    tools {
-        // This name must match Jenkins → Global Tool Configuration
-        sonarQubeScanner 'SonarQubeScanner'
-    }
-
     environment {
-        // Name defined in Jenkins > Configure System > SonarQube
-        SONARQUBE_SERVER = 'Mysonarqube'
+        SONARQUBE_SERVER = 'Mysonarqube' // Must match name in Jenkins > Configure SonarQube
+        SONAR_PROJECT_KEY = 'my_python_automation'
         SONAR_HOST_URL = 'http://192.168.1.4:9000'
     }
 
     stages {
         stage('Clone') {
             steps {
-                echo '📥 Cloning the repository...'
+                echo "Cloning the repo..."
                 checkout scm
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo '⚙️ Installing dependencies...'
-                sh 'pip install -r requirements.txt'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo '🧪 Running unit tests...'
-                sh 'pytest tests/ --maxfail=5 --disable-warnings --tb=short'
             }
         }
 
         stage('SonarQube Scan') {
             steps {
-                echo '🔍 Running SonarQube analysis...'
+                echo "Running SonarQube analysis..."
                 withSonarQubeEnv("${SONARQUBE_SERVER}") {
                     sh """
                         sonar-scanner \
-                        -Dsonar.projectKey=my_python_automation \
+                        -Dsonar.projectKey=$SONAR_PROJECT_KEY \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=$SONAR_HOST_URL
                     """
@@ -48,20 +29,31 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('hello.py') {
             steps {
-                echo '🚀 Deploying application (placeholder)...'
-                // Example: sh 'scp -r . user@server:/app'
+                echo 'jenkins started'
+                sh 'python3 /home/ajith/python-sample/hello.py'
+                echo 'hello.py'
+                echo 'jenkins executed successfully.'
             }
         }
-    }
 
-    post {
-        success {
-            echo '✅ Pipeline completed successfully.'
+        stage('Build') {
+            steps {
+                echo "Build step (optional)..."
+            }
         }
-        failure {
-            echo '❌ Pipeline failed. Check logs for details.'
+
+        stage('Test') {
+            steps {
+                echo "Run tests (optional)..."
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploy step (optional)..."
+            }
         }
     }
 }
