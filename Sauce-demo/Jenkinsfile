@@ -1,52 +1,67 @@
 pipeline {
     agent any
 
+    tools {
+        // This name must match Jenkins → Global Tool Configuration
+        sonarQubeScanner 'SonarQubeScanner'
+    }
+
     environment {
-        SONARQUBE_SERVER = 'Mysonarqube' // Name defined in Jenkins > Manage Jenkins > Configure SonarQube
+        // Name defined in Jenkins > Configure System > SonarQube
+        SONARQUBE_SERVER = 'Mysonarqube'
+        SONAR_HOST_URL = 'http://192.168.1.4:9000'
     }
 
     stages {
         stage('Clone') {
             steps {
-                echo "Cloning the repo..."
+                echo '📥 Cloning the repository...'
                 checkout scm
-            }
-        }
-
-        stage('SonarQube Scan') {
-            steps {
-                echo "Running SonarQube analysis..."
-                withSonarQubeEnv("${SONARQUBE_SERVER}") {
-                    sh """
-                        sonar-scanner \
-                        -Dsonar.projectKey=my_python_automation \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=http://192.168.1.4:9000 \
-                        -Dsonar.login=squ_d33310e2786c6e1eb13439d3121f50945aa90fba
-                    """
-                }
             }
         }
 
         stage('Build') {
             steps {
-                echo "Running build step..."
-                // e.g., pip install -r requirements.txt
+                echo '⚙️ Installing dependencies...'
+                sh 'pip install -r requirements.txt'
             }
         }
 
         stage('Test') {
             steps {
-                echo "Running tests..."
-                // e.g., pytest tests/
+                echo '🧪 Running unit tests...'
+                sh 'pytest tests/ --maxfail=5 --disable-warnings --tb=short'
+            }
+        }
+
+        stage('SonarQube Scan') {
+            steps {
+                echo '🔍 Running SonarQube analysis...'
+                withSonarQubeEnv("${SONARQUBE_SERVER}") {
+                    sh """
+                        sonar-scanner \
+                        -Dsonar.projectKey=my_python_automation \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=$SONAR_HOST_URL
+                    """
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                echo "Deploy stage (placeholder)..."
-                // FTP, SSH or Docker deployment steps
+                echo '🚀 Deploying application (placeholder)...'
+                // Example: sh 'scp -r . user@server:/app'
             }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Pipeline completed successfully.'
+        }
+        failure {
+            echo '❌ Pipeline failed. Check logs for details.'
         }
     }
 }
