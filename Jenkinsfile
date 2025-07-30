@@ -25,12 +25,14 @@ pipeline {
                 echo '🔍 Starting SonarQube analysis...'
                 withSonarQubeEnv('Mysonarqube') {  // ✅ This name must match Jenkins > Manage Jenkins > Configure System > SonarQube Servers
                     sh """
-                        ${SCANNER_HOME}/sonar-scanner \
-                        -Dsonar.projectKey=my_python_automation \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=${SONAR_HOST_URL} \
-                        -Dsonar.login=${SONAR_AUTH_TOKEN} \
-                        -Dsonar.python.version=3.10
+                       ${SCANNER_HOME}/sonar-scanner -X \
+                            -Dsonar.projectKey=my_python_automation \
+                            -Dsonar.sources=. \
+                            -Dsonar.inclusions=**/*.py \
+                            -Dsonar.host.url=${SONAR_HOST_URL} \
+                            -Dsonar.login=${SONAR_AUTH_TOKEN} \
+                            -Dsonar.python.version=3.10
+
                     """
                 }
             }
