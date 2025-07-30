@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+     triggers {
+        githubPush()
+    }
+
     environment {
         SCANNER_HOME = '/opt/sonar-scanner-5.0.1.3006-linux/bin'  // ✅ Update if your scanner path is different
         SONAR_HOST_URL = 'http://192.168.1.4:9000'                 // ✅ Your SonarQube server URL
