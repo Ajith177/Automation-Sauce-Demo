@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                echo '📥 Cloning repositories...'
+                echo '📥 Cloning repository...'
                 checkout scm
             }
         }
