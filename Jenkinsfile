@@ -8,6 +8,7 @@ pipeline {
     environment {
         SCANNER_HOME = '/opt/sonar-scanner-5.0.1.3006-linux/bin'  // ✅ Update if your scanner path is different
         SONAR_HOST_URL = 'http://192.168.1.4:9000'                 // ✅ Your SonarQube server URL
+        SONAR_AUTH_TOKEN = 'squ_d33310e2786c6e1eb13439d3121f50945aa90fba'
     }
 
     stages {
@@ -19,9 +20,6 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            environment {
-                SONAR_AUTH_TOKEN = credentials('SONAR_AUTH_TOKEN_ID')  // ✅ Use Jenkins credentials for your token
-            }
             steps {
                 echo '🔍 Starting SonarQube analysis...'
                 withSonarQubeEnv('Mysonarqube') {  // ✅ This name must match Jenkins > Manage Jenkins > Configure System > SonarQube Servers
