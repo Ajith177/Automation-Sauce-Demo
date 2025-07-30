@@ -29,15 +29,6 @@ pipeline {
             }
         }
 
-        stage('hello.py') {
-            steps {
-                echo 'jenkins started'
-                sh 'python3 /home/ajith/python-sample/hello.py'
-                echo 'hello.py'
-                echo 'jenkins executed successfully.'
-            }
-        }
-
         stage('Build') {
             steps {
                 echo "Build step (optional)..."
