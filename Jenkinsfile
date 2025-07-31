@@ -53,9 +53,11 @@ pipeline {
             steps {
                 echo '📊 Generating Allure Report and deploying to Nginx...'
                 sh '''
-                     mkdir -p /var/lib/jenkins/allure-public
-                     rm -rf /var/lib/jenkins/allure-public/*
-                     cp -r allure-report/* /var/lib/jenkins/allure-public/
+                    rm -rf allure-report
+                    /opt/allure/bin/allure generate allure-results -o allure-report
+                    mkdir -p /var/lib/jenkins/allure-public
+                    rm -rf /var/lib/jenkins/allure-public/*
+                    cp -r allure-report/* /var/lib/jenkins/allure-public/
                 '''
             }
         }
