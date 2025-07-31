@@ -53,13 +53,9 @@ pipeline {
             steps {
                 echo '📊 Generating Allure Report and deploying to Nginx...'
                 sh '''
-                    ls -l allure-results || echo "❌ allure-results not found!"
-                    /opt/allure/bin/allure generate allure-results -o allure-report || true
-                    ls -l allure-report || echo "❌ allure-report not generated!"
-
-                    sudo rm -rf /var/www/html/allure
-                    sudo cp -r allure-report /var/www/html/allure
-                    echo "✅ Copied to /var/www/html/allure"
+                     mkdir -p /var/lib/jenkins/allure-public
+                     rm -rf /var/lib/jenkins/allure-public/*
+                     cp -r allure-report/* /var/lib/jenkins/allure-public/
                 '''
             }
         }
