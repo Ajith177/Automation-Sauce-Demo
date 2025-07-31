@@ -21,14 +21,14 @@ pipeline {
 
         stage('Check Python venv support') {
             steps {
-                echo '🔍 Checking if python3-venv is installed...'
+                echo '🔍 Checking if python3.10-venv is installed...'
                 sh '''
                     if ! python3 -m venv --help > /dev/null 2>&1; then
                         echo "python3-venv is NOT installed on this Jenkins agent."
-                        echo "Please run: sudo apt install python3-venv"
+                        echo "Please run: sudo apt install python3.10-venv"
                         exit 1
                     else
-                        echo "python3-venv is installed."
+                        echo "python3.10-venv is installed."
                     fi
                 '''
             }
@@ -39,7 +39,7 @@ pipeline {
            steps {
             echo '🧪 Creating venv, installing dependencies and running tests...'
             sh '''
-                python3 -m venv venv
+                python3.10 -m venv venv
                 . venv/bin/activate
                 pip install --upgrade pip setuptools wheel build
                 pip install -r requirements.txt
