@@ -12,55 +12,55 @@ pipeline {
     }
 
     stages {
+
         stage('Clone') {
             steps {
-                echo 'Cloning repository...'
+                echo '🔄 Cloning repository...'
                 checkout scm
             }
         }
 
-        stage('Check Python 3.11 venv support') {
+        stage('Check Python 3.11 venv') {
             steps {
-                echo 'Checking python3.11-venv availability...'
+                echo '🔍 Checking python3.11-venv...'
                 sh '''
                     if ! python3.11 -m venv --help > /dev/null 2>&1; then
                         echo "python3.11-venv is NOT installed!"
                         echo "Run: sudo apt install python3.11-venv python3.11-dev"
                         exit 1
                     fi
-                    echo "python3.11-venv is installed."
                 '''
             }
         }
 
-        stage('Run Unit Tests') {
+        stage('Run Unit Tests + Allure') {
             steps {
-                echo 'Creating Python 3.11 virtual environment and running unit tests...'
+                echo '🧪 Running unit tests with Allure reporting...'
                 sh '''
-                    rm -rf venv
+                    rm -rf venv allure-results
                     python3.11 -m venv venv
                     . venv/bin/activate
-                    python -m pip install --upgrade pip setuptools wheel
-                    pip install --only-binary=:all: numpy || true
+                    pip install --upgrade pip setuptools wheel
                     pip install -r requirements.txt
-                    python Sauce-demo/test_suite.py > unit_test_report.txt || true
+                    pip install allure-pytest
+                    pytest Sauce-demo/test_suite.py --alluredir=allure-results > unit_test_report.txt || true
                 '''
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
-                echo '🔎 Running SonarQube analysis...'
+                echo '🔎 SonarQube scanning...'
                 withSonarQubeEnv('Mysonarqube') {
                     sh '''
                         ${SCANNER_HOME}/sonar-scanner -X \
-                            -Dsonar.projectKey=my_python_automation \
-                            -Dsonar.sources=. \
-                            -Dsonar.exclusions=venv/**,**/site-packages/**,**/__pycache__/** \
-                            -Dsonar.inclusions=**/*.py \
-                            -Dsonar.host.url=$SONAR_HOST_URL \
-                            -Dsonar.login=$SONAR_AUTH_TOKEN \
-                            -Dsonar.python.version=3.11
+                          -Dsonar.projectKey=my_python_automation \
+                          -Dsonar.sources=. \
+                          -Dsonar.exclusions=venv/**,**/site-packages/**,**/__pycache__/** \
+                          -Dsonar.inclusions=**/*.py \
+                          -Dsonar.host.url=$SONAR_HOST_URL \
+                          -Dsonar.login=$SONAR_AUTH_TOKEN \
+                          -Dsonar.python.version=3.11
                     '''
                 }
             }
@@ -68,7 +68,7 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                echo 'Waiting for SonarQube Quality Gate...'
+                echo '✅ Waiting for SonarQube Quality Gate...'
                 script {
                     def qg = waitForQualityGate()
                     if (qg.status != 'OK') {
@@ -80,10 +80,20 @@ pipeline {
 
         stage('Trivy Scan') {
             steps {
-                echo 'Running Trivy vulnerability scan...'
+                echo '🔐 Running Trivy vulnerability scan...'
                 sh '''
                     trivy fs --no-progress --format table -o trivy_report.txt . || true
                 '''
+            }
+        }
+
+        stage('Allure Report') {
+            steps {
+                echo '📊 Generating Allure Report in Jenkins UI...'
+                allure includeProperties: false,
+                       jdk: '',
+                       reportBuildPolicy: 'ALWAYS',
+                       results: [[path: 'allure-results']]
             }
         }
 
@@ -93,23 +103,21 @@ pipeline {
             }
             steps {
                 echo '📧 Sending success email...'
+                sh 'zip -r allure-report.zip allure-results || true'
                 emailext(
                     subject: "✅ Build Passed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                     body: """Good news!
 
-The Jenkins pipeline completed successfully.
-
 ✔ SonarQube Quality Gate passed
 ✔ Unit tests executed
 ✔ Trivy scan completed
+✔ Allure report published
 
-🔗 Project: ${env.JOB_NAME}
+🔗 Job: ${env.JOB_NAME}
 🔗 Build URL: ${env.BUILD_URL}
-
-Reports attached.
 """,
                     to: 'loneloverioo@gmail.com',
-                    attachmentsPattern: 'unit_test_report.txt,trivy_report.txt'
+                    attachmentsPattern: 'unit_test_report.txt,trivy_report.txt,allure-report.zip'
                 )
             }
         }
@@ -119,14 +127,15 @@ Reports attached.
         failure {
             echo '📧 Sending failure email...'
             emailext(
-                subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                subject: "❌ Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """The pipeline has failed.
 
-⚠️ Reason could be:
-- Quality Gate failed
-- Unit test or environment setup issue
+⚠️ Possible issues:
+- Quality Gate failure
+- Unit test errors
+- Trivy scan findings
 
-🔗 Project: ${env.JOB_NAME}
+🔗 Job: ${env.JOB_NAME}
 🔗 Build URL: ${env.BUILD_URL}
 """,
                 to: 'loneloverioo@gmail.com'
