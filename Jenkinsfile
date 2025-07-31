@@ -41,7 +41,7 @@ pipeline {
             sh '''
                 python3 -m venv venv
                 . venv/bin/activate
-                pip install --upgrade pip
+                pip install --upgrade pip setuptools wheel build
                 pip install -r requirements.txt
                 python Sauce-demo/test_suite.py > unit_test_report.txt || true
             '''
