@@ -9,6 +9,7 @@ pipeline {
         SCANNER_HOME = '/opt/sonar-scanner-5.0.1.3006-linux/bin'
         SONAR_HOST_URL = 'http://192.168.1.4:9000'
         SONAR_AUTH_TOKEN = 'squ_d33310e2786c6e1eb13439d3121f50945aa90fba'
+        ALLURE_DEPLOY_DIR = '/var/www/html/allure'
     }
 
     stages {
@@ -44,6 +45,21 @@ pipeline {
                     pip install -r requirements.txt
                     pip install allure-pytest
                     pytest Sauce-demo/test_suite.py --alluredir=allure-results > unit_test_report.txt || true
+                '''
+            }
+        }
+
+        stage('Allure Report') {
+            steps {
+                echo '📊 Generating Allure Report and deploying to Nginx...'
+                sh '''
+                    ls -l allure-results || echo "❌ allure-results not found!"
+                    /opt/allure/bin/allure generate allure-results -o allure-report || true
+                    ls -l allure-report || echo "❌ allure-report not generated!"
+
+                    sudo rm -rf /var/www/html/allure
+                    sudo cp -r allure-report /var/www/html/allure
+                    echo "✅ Copied to /var/www/html/allure"
                 '''
             }
         }
@@ -87,13 +103,25 @@ pipeline {
             }
         }
 
-        stage('Allure Report') {
+        stage('Allure Report in Jenkins UI') {
             steps {
-                echo '📊 Generating Allure Report in Jenkins UI...'
+                echo '📊 Publishing Allure Report to Jenkins UI...'
                 allure includeProperties: false,
                        jdk: '',
                        reportBuildPolicy: 'ALWAYS',
                        results: [[path: 'allure-results']]
+            }
+        }
+
+        stage('Publish Static Allure UI') {
+            steps {
+                echo '🌐 Deploying Allure Report to static server (Nginx)...'
+                sh '''
+                    rm -rf allure-report
+                    /opt/allure/bin/allure generate allure-results -o allure-report || true
+                    sudo rm -rf ${ALLURE_DEPLOY_DIR}
+                    sudo cp -r allure-report ${ALLURE_DEPLOY_DIR}
+                '''
             }
         }
 
@@ -113,8 +141,9 @@ pipeline {
 ✔ Trivy scan completed
 ✔ Allure report published
 
-🔗 Job: ${env.JOB_NAME}
+🔗 Jenkins Job: ${env.JOB_NAME}
 🔗 Build URL: ${env.BUILD_URL}
+🔗 Allure Report: http://192.168.1.4:8081
 """,
                     to: 'loneloverioo@gmail.com',
                     attachmentsPattern: 'unit_test_report.txt,trivy_report.txt,allure-report.zip'
@@ -135,7 +164,7 @@ pipeline {
 - Unit test errors
 - Trivy scan findings
 
-🔗 Job: ${env.JOB_NAME}
+🔗 Jenkins Job: ${env.JOB_NAME}
 🔗 Build URL: ${env.BUILD_URL}
 """,
                 to: 'loneloverioo@gmail.com'
