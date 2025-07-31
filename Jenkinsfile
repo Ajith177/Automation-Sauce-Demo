@@ -50,7 +50,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                echo '🔎 SonarQube scanning...'
+                echo '🔎 SonarQube scanning..'
                 withSonarQubeEnv('Mysonarqube') {
                     sh '''
                         ${SCANNER_HOME}/sonar-scanner -X \
