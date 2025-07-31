@@ -113,7 +113,7 @@ pipeline {
 
         stage('Notify Success') {
             when {
-                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+                expression { currentBuild.result == null || currentBuild.result in ['SUCCESS', 'UNSTABLE'] }
             }
             steps {
                 echo '📧 Sending success email...'
