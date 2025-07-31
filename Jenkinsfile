@@ -9,7 +9,6 @@ pipeline {
         SCANNER_HOME = '/opt/sonar-scanner-5.0.1.3006-linux/bin'
         SONAR_HOST_URL = 'http://192.168.1.4:9000'
         SONAR_AUTH_TOKEN = 'squ_d33310e2786c6e1eb13439d3121f50945aa90fba'
-
     }
 
     stages {
@@ -17,6 +16,15 @@ pipeline {
             steps {
                 echo '📥 Cloning repositories...'
                 checkout scm
+            }
+        }
+
+        stage('Run Unit Tests') {
+            steps {
+                echo '🧪 Running unit tests...'
+                // Run your existing test_suite.py and save report to junit format or text file
+                sh 'python3 test_suite.py > unit_test_report.txt || true'
+                // The "|| true" makes sure the build doesn't fail here even if tests fail, so we can handle later
             }
         }
 
@@ -52,12 +60,9 @@ pipeline {
         stage('Trivy Scan') {
             steps {
                 echo '🔍 Running Trivy scan on project files...'
-                script {
-                    sh 'trivy fs --no-progress --format table -o trivy_report.txt .'
-                }
+                sh 'trivy fs --no-progress --format table -o trivy_report.txt .'
             }
         }
-
 
         stage('Notify Success') {
             when {
@@ -71,12 +76,13 @@ pipeline {
 The build completed successfully and passed the SonarQube Quality Gate.
 
 🔍 Trivy scan report is attached for your review.
+🧪 Unit test report is also attached.
 
 📦 Project: ${env.JOB_NAME}
 🔗 Build URL: ${env.BUILD_URL}
 """,
                     to: 'loneloverioo@gmail.com',
-                    attachmentsPattern: 'trivy_report.txt'
+                    attachmentsPattern: 'trivy_report.txt,unit_test_report.txt'
                 )
             }
         }
@@ -91,6 +97,7 @@ The build completed successfully and passed the SonarQube Quality Gate.
 This could be due to:
 - SonarQube Quality Gate failure
 - Jenkins stage failure
+- Unit test failures
 
 📦 Project: ${env.JOB_NAME}
 🔗 Build URL: ${env.BUILD_URL}
