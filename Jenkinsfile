@@ -19,13 +19,13 @@ pipeline {
             }
         }
 
-        stage('Check Python venv support') {
+        stage('Check Python 3.11 venv support') {
             steps {
-                echo '🔍 Checking python3.11-venv availability...'
+                echo 'Checking python3.11-venv availability...'
                 sh '''
                     if ! python3.11 -m venv --help > /dev/null 2>&1; then
-                        echo "python3.10-venv is NOT installed!"
-                        echo "Run: sudo apt install python3.10-venv"
+                        echo "python3.11-venv is NOT installed!"
+                        echo "Run: sudo apt install python3.11-venv python3.11-dev"
                         exit 1
                     fi
                     echo "python3.11-venv is installed."
@@ -35,11 +35,11 @@ pipeline {
 
         stage('Run Unit Tests') {
             steps {
-                echo 'Creating venv and running tests.'
+                echo 'Creating Python 3.11 virtual environment and running unit tests...'
                 sh '''
                     python3.11 -m venv venv
                     . venv/bin/activate
-                    pip install --upgrade pip setuptools wheel build
+                    python -m pip install --upgrade pip setuptools wheel
                     pip install --only-binary=:all: numpy || true
                     pip install -r requirements.txt
                     python Sauce-demo/test_suite.py > unit_test_report.txt || true
@@ -49,7 +49,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                echo 'Running SonarQube analysis...'
+                echo '🔎 Running SonarQube analysis...'
                 withSonarQubeEnv('Mysonarqube') {
                     sh '''
                         ${SCANNER_HOME}/sonar-scanner -X \
@@ -58,7 +58,7 @@ pipeline {
                             -Dsonar.inclusions=**/*.py \
                             -Dsonar.host.url=$SONAR_HOST_URL \
                             -Dsonar.login=$SONAR_AUTH_TOKEN \
-                            -Dsonar.python.version=3.10
+                            -Dsonar.python.version=3.11
                     '''
                 }
             }
@@ -66,7 +66,7 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                echo 'Waiting for Quality Gate...'
+                echo 'Waiting for SonarQube Quality Gate...'
                 script {
                     def qg = waitForQualityGate()
                     if (qg.status != 'OK') {
@@ -78,8 +78,10 @@ pipeline {
 
         stage('Trivy Scan') {
             steps {
-                echo 'Running Trivy scan...'
-                sh 'trivy fs --no-progress --format table -o trivy_report.txt . || true'
+                echo 'Running Trivy vulnerability scan...'
+                sh '''
+                    trivy fs --no-progress --format table -o trivy_report.txt . || true
+                '''
             }
         }
 
@@ -88,12 +90,12 @@ pipeline {
                 expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
             }
             steps {
-                echo 'Sending success email...'
+                echo '📧 Sending success email...'
                 emailext(
-                    subject: "Build Passed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    subject: "✅ Build Passed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                     body: """Good news!
 
-The Jenkins pipeline completed successfully
+The Jenkins pipeline completed successfully.
 
 ✔ SonarQube Quality Gate passed
 ✔ Unit tests executed
@@ -103,7 +105,6 @@ The Jenkins pipeline completed successfully
 🔗 Build URL: ${env.BUILD_URL}
 
 Reports attached.
-
 """,
                     to: 'loneloverioo@gmail.com',
                     attachmentsPattern: 'unit_test_report.txt,trivy_report.txt'
@@ -114,16 +115,17 @@ Reports attached.
 
     post {
         failure {
-            echo 'Sending failure email...'
+            echo '📧 Sending failure email...'
             emailext(
                 subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """The pipeline has failed.
 
-Quality Gate failure
-Unit test or build error
+⚠️ Reason could be:
+- Quality Gate failed
+- Unit test or environment setup issue
 
-Project: ${env.JOB_NAME}
-Build URL: ${env.BUILD_URL}
+🔗 Project: ${env.JOB_NAME}
+🔗 Build URL: ${env.BUILD_URL}
 """,
                 to: 'loneloverioo@gmail.com'
             )
