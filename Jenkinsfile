@@ -37,6 +37,7 @@ pipeline {
             steps {
                 echo 'Creating Python 3.11 virtual environment and running unit tests...'
                 sh '''
+                    rm -rf venv
                     python3.11 -m venv venv
                     . venv/bin/activate
                     python -m pip install --upgrade pip setuptools wheel
