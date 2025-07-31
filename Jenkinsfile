@@ -21,14 +21,14 @@ pipeline {
 
         stage('Check Python venv support') {
             steps {
-                echo '🔍 Checking python3.10-venv availability...'
+                echo '🔍 Checking python3.11-venv availability...'
                 sh '''
-                    if ! python3.10 -m venv --help > /dev/null 2>&1; then
+                    if ! python3.11 -m venv --help > /dev/null 2>&1; then
                         echo "python3.10-venv is NOT installed!"
                         echo "Run: sudo apt install python3.10-venv"
                         exit 1
                     fi
-                    echo "python3.10-venv is installed."
+                    echo "python3.11-venv is installed."
                 '''
             }
         }
@@ -37,7 +37,7 @@ pipeline {
             steps {
                 echo 'Creating venv and running tests.'
                 sh '''
-                    python3.10 -m venv venv
+                    python3.11 -m venv venv
                     . venv/bin/activate
                     pip install --upgrade pip setuptools wheel build
                     pip install --only-binary=:all: numpy || true
