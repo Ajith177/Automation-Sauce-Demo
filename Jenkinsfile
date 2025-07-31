@@ -23,6 +23,7 @@ pipeline {
             steps {
                 echo '🧪 Running unit tests...'
                 // Run your existing test_suite.py and save report to junit format or text file
+                sh 'python3 -m pip install --user -r requirements.txt'
                 sh 'python3 Sauce-demo/test_suite.py > unit_test_report.txt || true'
                 // The "|| true" makes sure the build doesn't fail here even if tests fail, so we can handle later
             }
