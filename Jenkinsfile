@@ -111,18 +111,6 @@ pipeline {
             }
         }
 
-        stage('Publish Static Allure UI') {
-            steps {
-                echo '🌐 Deploying Allure Report to static server (Nginx)...'
-                sh '''
-                    rm -rf allure-report
-                    /opt/allure/bin/allure generate allure-results -o allure-report || true
-                    sudo rm -rf ${ALLURE_DEPLOY_DIR}
-                    sudo cp -r allure-report ${ALLURE_DEPLOY_DIR}
-                '''
-            }
-        }
-
         stage('Notify Success') {
             when {
                 expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
