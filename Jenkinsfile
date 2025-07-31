@@ -9,6 +9,7 @@ pipeline {
         SCANNER_HOME = '/opt/sonar-scanner-5.0.1.3006-linux/bin'
         SONAR_HOST_URL = 'http://192.168.1.4:9000'
         SONAR_AUTH_TOKEN = 'squ_d33310e2786c6e1eb13439d3121f50945aa90fba'
+
     }
 
     stages {
@@ -48,11 +49,15 @@ pipeline {
             }
         }
 
-        stage('Success') {
+        stage('Trivy Scan') {
             steps {
-                echo '✅ Jenkins pipeline completed successfully.'
+                echo '🔍 Running Trivy scan on project files...'
+                script {
+                    sh 'trivy fs --no-progress --format table -o trivy_report.txt .'
+                }
             }
         }
+
 
         stage('Notify Success') {
             when {
@@ -61,8 +66,17 @@ pipeline {
             steps {
                 emailext(
                     subject: "✅ Build Passed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                    body: "Good news! The build passed and Quality Gate is GREEN.\n\nProject: ${env.JOB_NAME}\nBuild: ${env.BUILD_URL}",
-                    to: 'loneloverioo@gmail.com'
+                    body: """Good news! 🎉
+
+The build completed successfully and passed the SonarQube Quality Gate.
+
+🔍 Trivy scan report is attached for your review.
+
+📦 Project: ${env.JOB_NAME}
+🔗 Build URL: ${env.BUILD_URL}
+""",
+                    to: 'loneloverioo@gmail.com',
+                    attachmentsPattern: 'trivy_report.txt'
                 )
             }
         }
@@ -72,7 +86,15 @@ pipeline {
         failure {
             emailext(
                 subject: "❌ Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "The build or Quality Gate check failed.\n\nProject: ${env.JOB_NAME}\nBuild: ${env.BUILD_URL}",
+                body: """Unfortunately, the pipeline has failed. 😞
+
+This could be due to:
+- SonarQube Quality Gate failure
+- Jenkins stage failure
+
+📦 Project: ${env.JOB_NAME}
+🔗 Build URL: ${env.BUILD_URL}
+""",
                 to: 'loneloverioo@gmail.com'
             )
         }
