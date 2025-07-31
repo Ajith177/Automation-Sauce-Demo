@@ -35,7 +35,7 @@ pipeline {
 
         stage('Run Unit Tests') {
             steps {
-                echo 'Creating venv and running tests...'
+                echo 'Creating venv and running tests.'
                 sh '''
                     python3.10 -m venv venv
                     . venv/bin/activate
