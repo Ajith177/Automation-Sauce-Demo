@@ -40,7 +40,7 @@ pipeline {
             echo '🧪 Creating venv, installing dependencies and running tests...'
             sh '''
                 python3 -m venv venv
-                source venv/bin/activate
+                . venv/bin/activate
                 pip install --upgrade pip
                 pip install -r requirements.txt
                 python Sauce-demo/test_suite.py > unit_test_report.txt || true
