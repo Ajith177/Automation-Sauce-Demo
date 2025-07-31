@@ -14,18 +14,37 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                echo '📥 Cloning repositories...'
+                echo 'Cloning repositories...'
                 checkout scm
             }
         }
 
-        stage('Run Unit Tests') {
+        stage('Check Python venv support') {
             steps {
-                echo '🧪 Running unit tests...'
-                // Run your existing test_suite.py and save report to junit format or text file
-                sh 'python3 -m pip install --user -r requirements.txt'
-                sh 'python3 Sauce-demo/test_suite.py > unit_test_report.txt || true'
-                // The "|| true" makes sure the build doesn't fail here even if tests fail, so we can handle later
+                echo '🔍 Checking if python3-venv is installed...'
+                sh '''
+                    if ! python3 -m venv --help > /dev/null 2>&1; then
+                        echo "python3-venv is NOT installed on this Jenkins agent."
+                        echo "Please run: sudo apt install python3-venv"
+                        exit 1
+                    else
+                        echo "python3-venv is installed."
+                    fi
+                '''
+            }
+            }
+
+
+       stage('Run Unit Tests') {
+           steps {
+            echo '🧪 Creating venv, installing dependencies and running tests...'
+            sh '''
+                python3 -m venv venv
+                source venv/bin/activate
+                pip install --upgrade pip
+                pip install -r requirements.txt
+                python Sauce-demo/test_suite.py > unit_test_report.txt || true
+            '''
             }
         }
 
@@ -48,11 +67,11 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                echo '⏳ Waiting for quality gate result...'
+                echo 'Waiting for quality gate result...'
                 script {
                     def qg = waitForQualityGate()
                     if (qg.status != 'OK') {
-                        error "❌ Quality Gate failed: ${qg.status}"
+                        error "Quality Gate failed: ${qg.status}"
                     }
                 }
             }
@@ -71,16 +90,16 @@ pipeline {
             }
             steps {
                 emailext(
-                    subject: "✅ Build Passed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                    body: """Good news! 🎉
+                    subject: "Build Passed_buddy: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    body: """Good news for You!
 
 The build completed successfully and passed the SonarQube Quality Gate.
 
-🔍 Trivy scan report is attached for your review.
-🧪 Unit test report is also attached.
+Trivy scan report is attached for your review.
+Unit test report is also attached.
 
-📦 Project: ${env.JOB_NAME}
-🔗 Build URL: ${env.BUILD_URL}
+Project: ${env.JOB_NAME}
+Build URL: ${env.BUILD_URL}
 """,
                     to: 'loneloverioo@gmail.com',
                     attachmentsPattern: 'trivy_report.txt,unit_test_report.txt'
@@ -92,16 +111,16 @@ The build completed successfully and passed the SonarQube Quality Gate.
     post {
         failure {
             emailext(
-                subject: "❌ Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """Unfortunately, the pipeline has failed. 😞
+                subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """Unfortunately, the pipeline has failed.
 
 This could be due to:
 - SonarQube Quality Gate failure
 - Jenkins stage failure
 - Unit test failures
 
-📦 Project: ${env.JOB_NAME}
-🔗 Build URL: ${env.BUILD_URL}
+Project: ${env.JOB_NAME}
+Build URL: ${env.BUILD_URL}
 """,
                 to: 'loneloverioo@gmail.com'
             )
