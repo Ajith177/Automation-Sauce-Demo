@@ -3,8 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
 import requests
-import tempfile
-import shutil
 
 
 
@@ -12,7 +10,6 @@ import shutil
 def driver():
     chrome_options = Options()
 
-    temp_profile = tempfile.mkdtemp()
     # chrome_options.add_argument(f"--user-data-dir={temp_profile}")
     chrome_options.add_argument("--incognito")
 
