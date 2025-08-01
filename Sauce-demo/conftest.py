@@ -1,47 +1,3 @@
-# import pytest
-# from selenium import webdriver
-# import time
-# from selenium.webdriver.chrome.options import Options
-# from selenium.webdriver.support import expected_conditions as EC
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.ui import WebDriverWait
-#
-#
-# @pytest.fixture(scope="session")
-# def driver():
-#     chrome_options = Options()
-#     chrome_options.add_experimental_option("prefs", {
-#         "credentials_enable_service": False,
-#         "profile.password_manager_enabled": False,
-#         "profile.default_content_setting_values.notifications": 2,
-#         "autofill.profile_enabled": False,
-#         "autofill.credit_card_enabled": False,
-#     })
-#     chrome_options.add_argument("--disable-save-password-bubble")
-#     chrome_options.add_argument("--disable-infobars")
-#     chrome_options.add_argument("--disable-notifications")
-#     chrome_options.add_argument("--disable-popup-blocking")
-#     chrome_options.add_argument("--user-data-dir=/tmp/temporary-profile")
-#     chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
-#
-#     driver = webdriver.Chrome(options=chrome_options)
-#     time.sleep(2)
-#     URL = "https://www.saucedemo.com/"
-#     driver.get(URL)
-#     print(URL, "This is the URL")
-#     time.sleep(10)
-#     driver.maximize_window()
-#
-#     yield driver
-#     driver.quit()
-#
-#
-# @pytest.fixture(scope="session")
-# def api_session():
-#     session = requests.Session()
-#     return session
-#
-
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -53,10 +9,11 @@ import requests
 def driver():
     chrome_options = Options()
 
-    # Optional: Use Incognito for a clean session (no stored warnings)
+    temp_profile = tempfile.mkdtemp()
+    chrome_options.add_argument(f"--user-data-dir={temp_profile}")
     chrome_options.add_argument("--incognito")
 
-    # Disable Chrome's password manager and related popups
+
     chrome_options.add_experimental_option("prefs", {
         "credentials_enable_service": False,
         "profile.password_manager_enabled": False,
