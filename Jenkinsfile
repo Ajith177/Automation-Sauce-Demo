@@ -44,7 +44,7 @@ pipeline {
                     pip install --upgrade pip setuptools wheel
                     pip install -r requirements.txt
                     pip install allure-pytest
-                    pytest Sauce-demo/test_suite.py --alluredir=allure-results > unit_test_report.txt || true
+                    PYTHONPATH=. pytest Sauce-demo/test_suite.py --alluredir=allure-results > unit_test_report.txt || true
                 '''
             }
         }
