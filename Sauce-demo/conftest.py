@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.options import Options
 import time
 import requests
 import tempfile
+import shutil
 
 
 
@@ -33,8 +34,6 @@ def driver():
     chrome_options.add_argument("--disable-infobars")
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_argument("--disable-features=PasswordManagerOnboarding,PasswordCheck")
-
-    # Enable performance logging (optional)
     chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
 
     # Launch Chrome
@@ -50,6 +49,7 @@ def driver():
 
     yield driver
     driver.quit()
+    shutil.rmtree(temp_profile, ignore_errors=True)
 
 
 @pytest.fixture(scope="session")
