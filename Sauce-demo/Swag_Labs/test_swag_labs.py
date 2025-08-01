@@ -14,7 +14,6 @@ from selenium.common.exceptions import UnexpectedAlertPresentException
 
 
 class Test_Swag:
-    # target_folder = r'C:\Users\AJITH\PycharmProjects\PythonProject\Sauce-demo\Screenshots\Swag_lab'
     target_folder = os.path.join(os.getcwd(), "Screenshots", "Swag_lab")
     click_on_three_dots="//button[contains(@id,'react-burger-menu-btn')]"
     click_on_all_items="//a[contains(text(),'All Items')]"
