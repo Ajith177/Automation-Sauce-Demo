@@ -17,7 +17,7 @@ pipeline {
 
         stage('Clone') {
             steps {
-                echo '🔄 Cloning repository...'
+                echo '🔄 Cloning repositories'
                 checkout scm
             }
         }
