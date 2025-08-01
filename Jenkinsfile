@@ -10,6 +10,7 @@ pipeline {
         SONAR_HOST_URL = 'http://192.168.1.4:9000'
         SONAR_AUTH_TOKEN = credentials('SONAR_AUTH_TOKEN_ID')
         ALLURE_DEPLOY_DIR = '/var/www/html/allure'
+        ALLURE_URL = 'http://192.168.1.4:8081'
     }
 
     stages {
