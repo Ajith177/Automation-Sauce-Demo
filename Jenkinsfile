@@ -96,7 +96,9 @@ pipeline {
             steps {
                 echo '🔐 Running Trivy vulnerability scan...'
                 sh '''
-                    trivy fs --no-progress --format table -o trivy_report.txt . || true
+                 export TRIVY_CACHE_DIR=/var/lib/jenkins/trivy-cache
+                 export TRIVY_DB_REPOSITORY=ghcr.io/aquasecurity/trivy-db
+                 trivy fs --no-progress --format table -o trivy_report.txt . || true
                 '''
             }
         }
