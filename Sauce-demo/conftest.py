@@ -3,6 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
 import requests
+import tempfile
+
 
 
 @pytest.fixture(scope="session")
