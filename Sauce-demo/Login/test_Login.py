@@ -9,7 +9,7 @@ import pytest
 
 
 class Test_Login:
-    target_folder = r'C:\Users\AJITH\PycharmProjects\PythonProject\Sauce-demo\Screenshots\Login'
+    target_folder = os.path.join(os.getcwd(), "Screenshots", "Login")
     email_input = "//input[contains(@placeholder,'Username')]"
     password_input="//input[contains(@placeholder,'Password')]"
     login_button = "//input[contains(@name,'login-button')]"
@@ -23,6 +23,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_1.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         print(Fore.RED + "The entered URL is Correct")
         time.sleep(2)
@@ -59,6 +60,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_4.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
         print(Fore.GREEN, "Clicking on the Login Button by Not filling the Password")
@@ -76,6 +78,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_5.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
         print("Username Input is get Cleared")
@@ -97,6 +100,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_6.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -106,6 +110,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_7.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
         driver.execute_script("alert('It is Not get Logged in by empty Password')")
@@ -130,6 +135,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_8.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -147,6 +153,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_9.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -172,6 +179,7 @@ class Test_Login:
         alert.accept()
         screenshot_file = "Testcase_10.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -194,6 +202,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_11.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -217,6 +226,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_12.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -240,6 +250,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_13.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -277,6 +288,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_14.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -309,6 +321,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_15.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -339,6 +352,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_16.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -369,6 +383,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_16.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -401,6 +416,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_17.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -432,6 +448,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_18.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -464,6 +481,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_19.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -484,6 +502,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_20.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -510,6 +529,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_21.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -539,6 +559,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_22.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -568,6 +589,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_23.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -598,6 +620,7 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_24.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -640,5 +663,6 @@ class Test_Login:
         time.sleep(2)
         screenshot_file = "Testcase_26.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)

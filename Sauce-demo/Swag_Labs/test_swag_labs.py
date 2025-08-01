@@ -14,7 +14,8 @@ from selenium.common.exceptions import UnexpectedAlertPresentException
 
 
 class Test_Swag:
-    target_folder = r'C:\Users\AJITH\PycharmProjects\PythonProject\Sauce-demo\Screenshots\Swag_lab'
+    # target_folder = r'C:\Users\AJITH\PycharmProjects\PythonProject\Sauce-demo\Screenshots\Swag_lab'
+    target_folder = os.path.join(os.getcwd(), "Screenshots", "Swag_lab")
     click_on_three_dots="//button[contains(@id,'react-burger-menu-btn')]"
     click_on_all_items="//a[contains(text(),'All Items')]"
     click_on_about="//a[contains(text(),'About')]"
@@ -133,6 +134,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_27.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -152,6 +154,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_28.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -171,6 +174,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_28.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -190,6 +194,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_30.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -207,6 +212,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_31.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -228,6 +234,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_32.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -249,6 +256,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_33.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -266,6 +274,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_34.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -283,6 +292,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_35.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -300,6 +310,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_36.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
         clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
@@ -321,6 +332,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_37.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
         clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
@@ -342,6 +354,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_38.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
         clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
@@ -363,6 +376,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_39.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
         clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
@@ -385,6 +399,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_40.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
         clicked_on_the_back_button = driver.find_element(By.XPATH, self.click_on_back_to_products).click()
@@ -451,6 +466,7 @@ class Test_Swag:
         time.sleep(3)
         screenshot_file = "Testcase_42.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -469,6 +485,7 @@ class Test_Swag:
         alert.accept()
         screenshot_file = "Testcase_43.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -498,6 +515,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_44.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -527,6 +545,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_45.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -557,6 +576,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_46.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -587,6 +607,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_47.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -617,6 +638,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_48.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -647,6 +669,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_49.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -677,6 +700,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_50.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -707,6 +731,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_51.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -737,6 +762,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_52.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
@@ -767,6 +793,7 @@ class Test_Swag:
         time.sleep(2)
         screenshot_file = "Testcase_53.png"
         driver.save_screenshot(screenshot_file)
+        os.makedirs(self.target_folder, exist_ok=True)
         shutil.move(screenshot_file, os.path.join(self.target_folder, os.path.basename(screenshot_file)))
         time.sleep(2)
 
