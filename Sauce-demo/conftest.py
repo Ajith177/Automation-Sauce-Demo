@@ -13,7 +13,7 @@ def driver():
     chrome_options = Options()
 
     temp_profile = tempfile.mkdtemp()
-    chrome_options.add_argument(f"--user-data-dir={temp_profile}")
+    # chrome_options.add_argument(f"--user-data-dir={temp_profile}")
     chrome_options.add_argument("--incognito")
 
 
@@ -49,7 +49,7 @@ def driver():
 
     yield driver
     driver.quit()
-    shutil.rmtree(temp_profile, ignore_errors=True)
+    # shutil.rmtree(temp_profile, ignore_errors=True)
 
 
 @pytest.fixture(scope="session")
