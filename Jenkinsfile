@@ -8,7 +8,7 @@ pipeline {
     environment {
         SCANNER_HOME = '/opt/sonar-scanner-5.0.1.3006-linux/bin'
         SONAR_HOST_URL = 'http://192.168.1.4:9000'
-        SONAR_AUTH_TOKEN = 'squ_d33310e2786c6e1eb13439d3121f50945aa90fba'
+        SONAR_AUTH_TOKEN = credentials('SONAR_AUTH_TOKEN_ID'
         ALLURE_DEPLOY_DIR = '/var/www/html/allure'
     }
 
@@ -70,10 +70,10 @@ pipeline {
                         ${SCANNER_HOME}/sonar-scanner -X \
                           -Dsonar.projectKey=my_python_automation \
                           -Dsonar.sources=. \
-                          -Dsonar.exclusions="venv/**,**/site-packages/**,**/__pycache__/**,**/utils/browser_setup.py"
+                          -Dsonar.exclusions=venv/**,**/site-packages/**,**/__pycache__/**,**/utils/browser_setup.py \
                           -Dsonar.inclusions=**/*.py \
-                          -Dsonar.host.url=$SONAR_HOST_URL \
-                          -Dsonar.login=$SONAR_AUTH_TOKEN \
+                          -Dsonar.host.url=${SONAR_HOST_URL} \
+                          -Dsonar.login=${SONAR_AUTH_TOKEN} \
                           -Dsonar.python.version=3.11
                     '''
                 }
