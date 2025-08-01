@@ -7,21 +7,29 @@ import tempfile
 import shutil
 
 
+def pytest_addoption(parser):
+    parser.addoption(
+        "--headless", action="store_true", default=False,
+        help="Run browser in headless mode"
+    )
+
+
 @pytest.fixture(scope="session")
-def driver():
+def driver(pytestconfig):
     chrome_options = Options()
 
-    # ✅ Use a temporary profile directory (avoids shared profile conflicts in CI)
+    # Temporary profile directory for isolated sessions
     temp_profile = tempfile.mkdtemp()
     chrome_options.add_argument(f"--user-data-dir={temp_profile}")
-
-    # ✅ Recommended arguments for CI environments
-    chrome_options.add_argument("--headless=new")  # Use 'new' for recent Chrome versions
     chrome_options.add_argument("--incognito")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
 
-    # ✅ Browser preference settings
+    # Enable headless mode only if --headless is passed
+    if pytestconfig.getoption("headless"):
+        chrome_options.add_argument("--headless=new")
+
+    # Disable various Chrome services/features that interfere with automation
     chrome_options.add_experimental_option("prefs", {
         "credentials_enable_service": False,
         "profile.password_manager_enabled": False,
@@ -32,7 +40,6 @@ def driver():
         "profile.default_content_setting_values.automatic_downloads": 1
     })
 
-    # ✅ Disable unnecessary features for automation
     chrome_options.add_argument("--disable-save-password-bubble")
     chrome_options.add_argument("--disable-notifications")
     chrome_options.add_argument("--disable-popup-blocking")
@@ -41,20 +48,20 @@ def driver():
     chrome_options.add_argument("--disable-features=PasswordManagerOnboarding,PasswordCheck")
     chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
 
-    # ✅ Launch the browser
+    # Start Chrome
     driver = webdriver.Chrome(options=chrome_options)
     driver.set_window_size(1920, 1080)
     time.sleep(2)
 
-    # ✅ Navigate to target site
-    URL = "https://www.saucedemo.com/"
-    driver.get(URL)
-    print(URL, "This is the URL")
+    # Open the application
+    url = "https://www.saucedemo.com/"
+    driver.get(url)
+    print(url, "This is the URL")
     time.sleep(3)
 
     yield driver
 
-    # ✅ Cleanup after session
+    # Cleanup after tests
     driver.quit()
     shutil.rmtree(temp_profile, ignore_errors=True)
 
