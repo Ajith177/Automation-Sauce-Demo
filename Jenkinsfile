@@ -39,13 +39,15 @@ pipeline {
             steps {
                 echo '🧪 Running unit tests with Allure reporting...'
                 sh '''
-                    rm -rf venv allure-results
+                    rm -rf venv allure-results coverage.xml
                     python3.11 -m venv venv
                     . venv/bin/activate
                     pip install --upgrade pip setuptools wheel
                     pip install -r requirements.txt
                     pip install allure-pytest
-                    PYTHONPATH=. pytest Sauce-demo/test_suite.py --alluredir=allure-results > unit_test_report.txt || true
+                    PYTHONPATH=. pytest Sauce-demo/test_suite.py \
+                      --cov=Sauce-demo --cov-report=xml --cov-report=term \
+                      --alluredir=allure-results > unit_test_report.txt || true
                 '''
             }
         }
@@ -73,6 +75,7 @@ pipeline {
                           -Dsonar.sources=. \
                           -Dsonar.exclusions=venv/**,**/site-packages/**,**/__pycache__/**,**/utils/browser_setup.py \
                           -Dsonar.inclusions=**/*.py \
+                          -Dsonar.python.coverage.reportPaths=coverage.xml \
                           -Dsonar.host.url=${SONAR_HOST_URL} \
                           -Dsonar.login=${SONAR_AUTH_TOKEN} \
                           -Dsonar.python.version=3.11
