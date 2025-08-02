@@ -17,14 +17,14 @@ pipeline {
 
         stage('Clone') {
             steps {
-                echo '🔄 Cloning repositories'
+                echo '🔄 Cloning repositories...'
                 checkout scm
             }
         }
 
         stage('Check Python 3.11 venv') {
             steps {
-                echo '🔍 Checking python3.11-venv...'
+                echo '🔍 Checking python3.11-venv..'
                 sh '''
                     if ! python3.11 -m venv --help > /dev/null 2>&1; then
                         echo "python3.11-venv is NOT installed!"
