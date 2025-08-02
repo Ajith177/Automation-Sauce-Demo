@@ -1171,18 +1171,6 @@ class Test_Swag:
         click_on_check_out=driver.find_element(By.XPATH,self.check_out).click()
         time.sleep(3)
 
-    @pytest.mark.run(order=70)
-    def test_case_sixty_nine(self, driver):
-        time.sleep(4)
-        entering_first_name = driver.find_element(By.XPATH, self.first_name_input).send_keys("DEMO_USER")
-        time.sleep(3)
-        entering_last_name = driver.find_element(By.XPATH, self.last_name_input).send_keys("hded")
-        time.sleep(3)
-        entering_postal_code = driver.find_element(By.XPATH, self.postal_code_input).send_keys("12345")
-        time.sleep(3)
-        click_on_continue_button = driver.find_element(By.XPATH, self.continue_button_on_check_out).click()
-        time.sleep(3)
-        print(Fore.BLACK,"Clicked the Continue Button")
 
 
 
@@ -1260,67 +1248,5 @@ class Test_Swag:
 
 
 
-    # @pytest.mark.run(order=42)
-    # def test_case_forty_two(self, driver):
-    #     print("Adding the Values")
-    #     clicked_on_three_lines=driver.find_element(By.XPATH,self.click_on_three_dots).click()
-    #     time.sleep(2)
-    #     clicked_on_about=driver.find_element(By.XPATH,self.click_on_about).click()
-    #     time.sleep(3)
-    #
-    # @pytest.mark.run(order=43)
-    # def test_case_forty_three(self, driver):
-    #     print(Fore.MAGENTA,"clicked on Web Testing")
-    #     time.sleep(2)
-    #     driver.execute_script("alert('Clicked on the web Testing')")
-    #     time.sleep(3)
-    #     alert = driver.switch_to.alert
-    #     time.sleep(2)
-    #     alert.accept()
-    #     time.sleep(3)
-    #     clicked_on_web_testing=driver.find_element(By.XPATH,self.clicked_on_Web_testing)
-    #     time.sleep(2)
-    #
-    # @pytest.mark.run(order=44)
-    # def test_case_forty_four(self, driver):
-    #     print(Fore.MAGENTA, "clicked on AI Powered Insights")
-    #     time.sleep(2)
-    #     driver.execute_script("alert('Clicked on the AI Powered Insights')")
-    #     time.sleep(3)
-    #     alert = driver.switch_to.alert
-    #     time.sleep(2)
-    #     alert.accept()
-    #     time.sleep(3)
-    #     clicked_on_AI_Powered_Insights=driver.find_element(By.XPATH,self.clicked_on_AI_Powered_Insights).click()
-    #     time.sleep(2)
-    #
-    # @pytest.mark.run(order=45)
-    # def test_case_forty_five(self, driver):
-    #     print(Fore.MAGENTA, "clicked on Mobile App Testing")
-    #     time.sleep(2)
-    #     driver.execute_script("alert('Clicked on the Mobile App Testing')")
-    #     time.sleep(3)
-    #     alert = driver.switch_to.alert
-    #     time.sleep(2)
-    #     alert.accept()
-    #     time.sleep(3)
-    #     clicked_on_Mobile_App_Testing=driver.find_element(By.XPATH,self.clicked_on_Mobile_App_Testing).click()
-    #     time.sleep(2)
-    #
-    # @pytest.mark.run(order=46)
-    # def test_case_forty_six(self, driver):
-    #     print(Fore.MAGENTA, "clicked on Mobile App Distribution")
-    #     time.sleep(2)
-    #     driver.execute_script("alert('Clicked on the Mobile App Distribution')")
-    #     time.sleep(3)
-    #     alert = driver.switch_to.alert
-    #     time.sleep(2)
-    #     alert.accept()
-    #     time.sleep(3)
-    #     clicked_on_Mobile_App_Distribution=driver.find_element(By.XPATH,self.clicked_on_Mobile_App_Distribution).click()
-    #     time.sleep(2)
-    #
-    # @pytest.mark.run(order=47)
-    # def test_case_forty_seven(self, driver):
-    #     print(Fore.BLUE,"")
+
 
